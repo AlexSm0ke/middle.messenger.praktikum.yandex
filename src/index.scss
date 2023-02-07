@@ -1,0 +1,17 @@
+@import './components/input/input.scss';
+@import './components/inputField/inputField.scss';
+@import './components/button/button.scss';
+@import './pages/login/login.scss';
+@import './pages/singup/singup.scss';
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+// $background-red: red;
+
+// #root {
+// 	color: $background-red;
+// }
