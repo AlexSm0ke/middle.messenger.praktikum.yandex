@@ -1,13 +1,9 @@
 <div class="container-singup">
 	<form class="login-form" action="login">
 		<div class="login-form__header">Регистрация</div>
-		{{> inputField placeholder="Почта" name="login" textError="минимум 3 символа"}}
-		{{> inputField placeholder="Логин" name="password" textError="минимум 3 символа"}}
-		{{> inputField placeholder="Имя" name="password" textError="минимум 3 символа"}}
-		{{> inputField placeholder="Фамилия" name="password" textError="минимум 3 символа"}}
-		{{> inputField placeholder="Телефон" name="password" textError="минимум 3 символа"}}
-		{{> inputField placeholder="Пароль" name="password" textError="минимум 3 символа"}}
-		{{> inputField placeholder="Пароль (ещё раз)" name="password" textError="минимум 3 символа"}}
+		{{#each fields}}
+		{{> input placeholder=placeholder name=name textError=textError}}
+		{{/each}}
 		<div class="login-form__items">
 			<div class="login-form__item">
 				{{> button primary="primary" lable="ЗАРЕГИСТРИРОВАТЬСЯ"}}

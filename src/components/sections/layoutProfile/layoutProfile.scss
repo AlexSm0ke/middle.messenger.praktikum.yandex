@@ -1,0 +1,86 @@
+.pageProfile__container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.pageProfile__items {
+	width: 510px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.pageProfile__item {
+	text-align: center;
+}
+
+.pageProfile__avatar {
+	margin: 60px 0;
+	text-align: center;
+}
+
+.pageProfile__firstName {
+	margin-top: 21px;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.pageProfile__photo {
+	width: 130px;
+	height: 130px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	overflow: hidden;
+	box-sizing: border-box;
+	background: #6D0070;
+	opacity: 0.6;
+	cursor: pointer;
+
+	& span {
+		width: 130px;
+		height: 130px;
+		border-radius: 50%;
+
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+	}
+
+	&:hover span {
+		background: #000000;
+		transition: 0.2s;
+		opacity: 0.99;
+		color: white;
+	}
+}
+
+.pageProfile__body {
+	width: 80%;
+}
+
+.pageProfile__footer {
+	margin-top: 60px;
+	width: 80%;
+}
+
+.sideBar {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #FBFBFB;
+	height: 100vh;
+	width: 64px;
+	cursor: pointer;
+
+	&:hover {
+		background: #6D0070;
+		opacity: 0.5;
+		transition: 0.3s;
+	}
+}

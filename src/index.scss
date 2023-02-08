@@ -1,8 +1,12 @@
-@import './components/input/input.scss';
-@import './components/inputField/inputField.scss';
-@import './components/button/button.scss';
+@import './styles/globals.scss';
+@import './components/ui/input/input.scss';
+@import './components/ui/inputField/inputField.scss';
+@import './components/ui/button/button.scss';
 @import './pages/login/login.scss';
 @import './pages/singup/singup.scss';
+@import './pages/profile/profile.scss';
+@import './components/sections/pageError/pageError.scss';
+@import './components/sections/layoutProfile/layoutProfile.scss';
 
 * {
 	margin: 0;
