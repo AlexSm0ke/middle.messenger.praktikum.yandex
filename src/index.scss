@@ -7,11 +7,16 @@
 @import './pages/profile/profile.scss';
 @import './components/sections/pageError/pageError.scss';
 @import './components/sections/layoutProfile/layoutProfile.scss';
+@import './components/sections/layoutModal/layoutModal.scss';
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+
+body {
+	background-color: rgb(223, 223, 223);
 }
 
 // $background-red: red;

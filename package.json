@@ -4,7 +4,7 @@
 	"description": "",
 	"scripts": {
 		"dev": "parcel index.html --no-cache",
-		"build": "parcel build index.hbs --no-cache",
+		"build": "parcel build index.html --no-cache",
 		"scss": "node-sass -watch scss -o css"
 	},
 	"keywords": [],

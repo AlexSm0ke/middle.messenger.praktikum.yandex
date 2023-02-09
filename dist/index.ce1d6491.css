@@ -340,10 +340,70 @@ html, body {
   transition: all .3s;
 }
 
+.modal {
+  width: 340px;
+  height: 257px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  background: #fff;
+  border: 0;
+  border-radius: 12px;
+  margin: -128.5px 0 0 -170px;
+  transition: all 1s linear;
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  box-shadow: 0 0 6px #00000024;
+}
+
+.modal::backdrop {
+  background-color: #f0f;
+}
+
+.modal[open] {
+  transform: sale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal__inner {
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+  display: flex;
+}
+
+.modal__lable {
+  margin: 30px;
+  font-weight: bold;
+}
+
+.modal__lable.error {
+  color: red;
+}
+
+.modal__button {
+  width: 100%;
+  margin: 30px 0 auto;
+}
+
+.modal__error {
+  color: red;
+  margin: 10px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-color: #dfdfdf;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */

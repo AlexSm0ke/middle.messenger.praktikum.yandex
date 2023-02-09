@@ -563,6 +563,7 @@ var _inputField = require("./components/ui/inputField");
 var _button = require("./components/ui/button");
 var _pageError = require("./components/sections/pageError");
 var _layoutProfile = require("./components/sections/layoutProfile");
+var _layoutModal = require("./components/sections/layoutModal");
 var _page404 = require("./pages/page404");
 var _loginHbs = require("./pages/login/login.hbs");
 var _loginHbsDefault = parcelHelpers.interopDefault(_loginHbs);
@@ -576,6 +577,8 @@ var _profileHbs = require("./pages/profile/profile.hbs");
 var _profileHbsDefault = parcelHelpers.interopDefault(_profileHbs);
 var _profileEditHbs = require("./pages/profileEdit/profileEdit.hbs");
 var _profileEditHbsDefault = parcelHelpers.interopDefault(_profileEditHbs);
+var _profilePasswordHbs = require("./pages/profilePassword/profilePassword.hbs");
+var _profilePasswordHbsDefault = parcelHelpers.interopDefault(_profilePasswordHbs);
 var _unionPng = require("../public/images/union.png");
 var _unionPngDefault = parcelHelpers.interopDefault(_unionPng);
 var _backPng = require("../public/images/back.png");
@@ -584,7 +587,6 @@ var handlebars = require("a7ba6f611299c72"), layout = require("75d9534a10bbd30f"
 layout.register(handlebars);
 function render(html) {
     const app = document.querySelector("#app");
-    console.log("app", app);
     app.innerHTML = html;
 }
 const PROPS = {
@@ -666,7 +668,7 @@ const PROPS = {
         avatar: (0, _unionPngDefault.default),
         back: (0, _backPngDefault.default),
         UserName: "Олегuu",
-        lable: "сохранить",
+        lable: "Cохранить",
         primary: "primary",
         fields: [
             {
@@ -694,6 +696,27 @@ const PROPS = {
                 placeholder: "Телефон"
             }
         ]
+    },
+    "profilePassword": {
+        avatar: (0, _unionPngDefault.default),
+        back: (0, _backPngDefault.default),
+        UserName: "Олег",
+        lable: "Cохранить",
+        primary: "primary",
+        fields: [
+            {
+                name: "oldPassword",
+                placeholder: "Старый пароль"
+            },
+            {
+                name: "newPassword",
+                placeholder: "Новый пароль"
+            },
+            {
+                name: "newPassword",
+                placeholder: "Повторите новый пароль"
+            }
+        ]
     }
 };
 const ROUTES = {
@@ -702,7 +725,8 @@ const ROUTES = {
     "page404": (0, _page404HbsDefault.default),
     "page500": (0, _page500HbsDefault.default),
     "profile": (0, _profileHbsDefault.default),
-    "profileEdit": (0, _profileEditHbsDefault.default)
+    "profileEdit": (0, _profileEditHbsDefault.default),
+    "profilePassword": (0, _profilePasswordHbsDefault.default)
 };
 window.goToPage = function(namePage) {
     const page = ROUTES[namePage];
@@ -713,7 +737,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
     render(ROUTES.profile(PROPS.profile));
 });
 
-},{"./components/ui/input":"aDUJw","./components/ui/inputField":"kJDvv","./components/ui/button":"3tAoj","./components/sections/pageError":"i0fcA","./components/sections/layoutProfile":"lKlhR","./pages/page404":"2iYub","./pages/login/login.hbs":"eP1jN","./pages/singup/singup.hbs":"bngWi","./pages/page404/page404.hbs":"fxfii","./pages/page500/page500.hbs":"5GS3z","./pages/profile/profile.hbs":"hpzTq","./pages/profileEdit/profileEdit.hbs":"WY7Kp","../public/images/union.png":"fv1FC","../public/images/back.png":"8oIgc","a7ba6f611299c72":"i0QfX","75d9534a10bbd30f":"2m7X9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aDUJw":[function(require,module,exports) {
+},{"./components/ui/input":"aDUJw","./components/ui/inputField":"kJDvv","./components/ui/button":"3tAoj","./components/sections/pageError":"i0fcA","./components/sections/layoutProfile":"lKlhR","./components/sections/layoutModal":"fT6Dx","./pages/page404":"2iYub","./pages/login/login.hbs":"eP1jN","./pages/singup/singup.hbs":"bngWi","./pages/page404/page404.hbs":"fxfii","./pages/page500/page500.hbs":"5GS3z","./pages/profile/profile.hbs":"hpzTq","./pages/profileEdit/profileEdit.hbs":"WY7Kp","./pages/profilePassword/profilePassword.hbs":"dXY7Z","../public/images/union.png":"fv1FC","../public/images/back.png":"8oIgc","a7ba6f611299c72":"i0QfX","75d9534a10bbd30f":"2m7X9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aDUJw":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _inputHbs = require("./input.hbs");
 var _inputHbsDefault = parcelHelpers.interopDefault(_inputHbs);
@@ -2130,18 +2154,32 @@ const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
             if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
             return undefined;
         };
-        return '<div class="button-container">\r\n	<button class="button-container__button button-container__button-' + alias4((helper = (helper = lookupProperty(helpers, "primary") || (depth0 != null ? lookupProperty(depth0, "primary") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+        return '<div class="button-container">\r\n	<button type="' + alias4((helper = (helper = lookupProperty(helpers, "type") || (depth0 != null ? lookupProperty(depth0, "type") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "type",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 2,
+                    "column": 15
+                },
+                "end": {
+                    "line": 2,
+                    "column": 23
+                }
+            }
+        }) : helper)) + '" class="button-container__button button-container__button-' + alias4((helper = (helper = lookupProperty(helpers, "primary") || (depth0 != null ? lookupProperty(depth0, "primary") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
             "name": "primary",
             "hash": {},
             "data": data,
             "loc": {
                 "start": {
                     "line": 2,
-                    "column": 66
+                    "column": 82
                 },
                 "end": {
                     "line": 2,
-                    "column": 79
+                    "column": 95
                 }
             }
         }) : helper)) + '">' + alias4((helper = (helper = lookupProperty(helpers, "lable") || (depth0 != null ? lookupProperty(depth0, "lable") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
@@ -2151,11 +2189,11 @@ const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
             "loc": {
                 "start": {
                     "line": 2,
-                    "column": 81
+                    "column": 97
                 },
                 "end": {
                     "line": 2,
-                    "column": 90
+                    "column": 106
                 }
             }
         }) : helper)) + "</button>\r\n</div>\r\n";
@@ -2219,7 +2257,8 @@ const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
             "name": "button",
             "hash": {
                 "primary": "primary",
-                "lable": "Назад к чатам"
+                "lable": "Назад к чатам",
+                "type": "button"
             },
             "data": data,
             "indent": "			",
@@ -2493,6 +2532,51 @@ const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
 });
 exports.default = templateFunction;
 
+},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fT6Dx":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
+var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
+var _handlebarsLayouts = require("handlebars-layouts");
+var _handlebarsLayoutsDefault = parcelHelpers.interopDefault(_handlebarsLayouts);
+var _layoutModalHbs = require("./layoutModal.hbs");
+var _layoutModalHbsDefault = parcelHelpers.interopDefault(_layoutModalHbs);
+(0, _handlebarsRuntimeDefault.default).registerPartial("layoutModal", (0, _layoutModalHbsDefault.default));
+(0, _handlebarsRuntimeDefault.default).registerHelper((0, _handlebarsLayoutsDefault.default)((0, _handlebarsRuntimeDefault.default)));
+
+},{"handlebars/dist/handlebars.runtime":"b7ZpO","handlebars-layouts":"2m7X9","./layoutModal.hbs":"ewO98","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ewO98":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
+var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
+const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
+    "compiler": [
+        8,
+        ">= 4.3.0"
+    ],
+    "main": function(container, depth0, helpers, partials, data) {
+        var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
+            return undefined;
+        };
+        return '<dialog class="modal" open>\r\n	<form method="post" class="modal__form" enctype="multipart/form-data">\r\n		<div class="modal__inner">\r\n			<div class="modal__lable">Загрузите файл</div>\r\n			<div class="modal__input">\r\n				<input class="blabla" type="file" name="file" size="1" accept="image/*,image/jpeg">\r\n			</div>\r\n			<div class="modal__button">\r\n' + ((stack1 = container.invokePartial(lookupProperty(partials, "button"), depth0, {
+            "name": "button",
+            "hash": {
+                "primary": "primary",
+                "lable": "Поменять",
+                "type": "submit"
+            },
+            "data": data,
+            "indent": "				",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + '			</div>\r\n			<div class="modal__error">нужно выбрать файл</div>\r\n	</form>\r\n	</div>\r\n</dialog>\r\n';
+    },
+    "usePartial": true,
+    "useData": true
+});
+exports.default = templateFunction;
+
 },{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2iYub":[function(require,module,exports) {
 
 },{}],"eP1jN":[function(require,module,exports) {
@@ -2548,7 +2632,8 @@ const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
         })) != null ? stack1 : "") + '			</div>\r\n			<div onclick="goToPage(\'singup\')" class="login-form__item">\r\n' + ((stack1 = container.invokePartial(lookupProperty(partials, "button"), depth0, {
             "name": "button",
             "hash": {
-                "lable": "ЗАРЕГИСТРИРОВАТЬСЯ"
+                "lable": "ЗАРЕГИСТРИРОВАТЬСЯ",
+                "type": "button"
             },
             "data": data,
             "indent": "				",
@@ -2626,7 +2711,8 @@ const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
         })) != null ? stack1 : "") + '			</div>\r\n			<div onclick="goToPage(\'login\')" class="login-form__item">\r\n' + ((stack1 = container.invokePartial(lookupProperty(partials, "button"), depth0, {
             "name": "button",
             "hash": {
-                "lable": "ВОЙТИ"
+                "lable": "ВОЙТИ",
+                "type": "button"
             },
             "data": data,
             "indent": "				",
@@ -2828,7 +2914,7 @@ const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
                     "column": 9
                 }
             }
-        })) != null ? stack1 : "") + '<a href="#" class="profile-options__exit">Выйти</a>\r\n\r\n';
+        })) != null ? stack1 : "") + '<a onclick="goToPage(\'profileEdit\')" href="#" class="profile-options__exit">Выйти</a>\r\n\r\n';
     },
     "6": function(container, depth0, helpers, partials, data) {
         var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
@@ -2851,16 +2937,19 @@ const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
             }
         }) : helper)) + "</a>\r\n</div>\r\n";
     },
+    "8": function(container, depth0, helpers, partials, data) {
+        return "";
+    },
     "compiler": [
         8,
         ">= 4.3.0"
     ],
     "main": function(container, depth0, helpers, partials, data) {
-        var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        var stack1, alias1 = depth0 != null ? depth0 : container.nullContext || {}, alias2 = container.hooks.helperMissing, lookupProperty = container.lookupProperty || function(parent, propertyName) {
             if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
             return undefined;
         };
-        return (stack1 = (lookupProperty(helpers, "extend") || depth0 && lookupProperty(depth0, "extend") || container.hooks.helperMissing).call(depth0 != null ? depth0 : container.nullContext || {}, "layoutProfile", {
+        return ((stack1 = (lookupProperty(helpers, "extend") || depth0 && lookupProperty(depth0, "extend") || alias2).call(alias1, "layoutProfile", {
             "name": "extend",
             "hash": {},
             "fn": container.program(1, data, 0),
@@ -2876,7 +2965,23 @@ const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
                     "column": 11
                 }
             }
-        })) != null ? stack1 : "";
+        })) != null ? stack1 : "") + ((stack1 = (lookupProperty(helpers, "extend") || depth0 && lookupProperty(depth0, "extend") || alias2).call(alias1, "layoutModal", {
+            "name": "extend",
+            "hash": {},
+            "fn": container.program(8, data, 0),
+            "inverse": container.noop,
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 20,
+                    "column": 0
+                },
+                "end": {
+                    "line": 21,
+                    "column": 11
+                }
+            }
+        })) != null ? stack1 : "");
     },
     "useData": true
 });
@@ -2922,7 +3027,7 @@ const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
                 },
                 "end": {
                     "line": 7,
-                    "column": 46
+                    "column": 59
                 }
             }
         })) != null ? stack1 : "") + "\r\n";
@@ -2974,6 +3079,142 @@ const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
         };
         return (stack1 = container.invokePartial(lookupProperty(partials, "button"), depth0, {
             "name": "button",
+            "hash": {
+                "type": "button"
+            },
+            "data": data,
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "";
+    },
+    "compiler": [
+        8,
+        ">= 4.3.0"
+    ],
+    "main": function(container, depth0, helpers, partials, data) {
+        var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
+            return undefined;
+        };
+        return (stack1 = (lookupProperty(helpers, "extend") || depth0 && lookupProperty(depth0, "extend") || container.hooks.helperMissing).call(depth0 != null ? depth0 : container.nullContext || {}, "layoutProfile", {
+            "name": "extend",
+            "hash": {},
+            "fn": container.program(1, data, 0),
+            "inverse": container.noop,
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 1,
+                    "column": 0
+                },
+                "end": {
+                    "line": 8,
+                    "column": 11
+                }
+            }
+        })) != null ? stack1 : "";
+    },
+    "usePartial": true,
+    "useData": true
+});
+exports.default = templateFunction;
+
+},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dXY7Z":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
+var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
+const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
+    "1": function(container, depth0, helpers, partials, data) {
+        var stack1, alias1 = depth0 != null ? depth0 : container.nullContext || {}, alias2 = container.hooks.helperMissing, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
+            return undefined;
+        };
+        return ((stack1 = (lookupProperty(helpers, "content") || depth0 && lookupProperty(depth0, "content") || alias2).call(alias1, "body", {
+            "name": "content",
+            "hash": {},
+            "fn": container.program(2, data, 0),
+            "inverse": container.noop,
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 2,
+                    "column": 0
+                },
+                "end": {
+                    "line": 6,
+                    "column": 12
+                }
+            }
+        })) != null ? stack1 : "") + ((stack1 = (lookupProperty(helpers, "content") || depth0 && lookupProperty(depth0, "content") || alias2).call(alias1, "footer", {
+            "name": "content",
+            "hash": {},
+            "fn": container.program(5, data, 0),
+            "inverse": container.noop,
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 7,
+                    "column": 0
+                },
+                "end": {
+                    "line": 7,
+                    "column": 59
+                }
+            }
+        })) != null ? stack1 : "") + "\r\n";
+    },
+    "2": function(container, depth0, helpers, partials, data) {
+        var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
+            return undefined;
+        };
+        return (stack1 = lookupProperty(helpers, "each").call(depth0 != null ? depth0 : container.nullContext || {}, depth0 != null ? lookupProperty(depth0, "fields") : depth0, {
+            "name": "each",
+            "hash": {},
+            "fn": container.program(3, data, 0),
+            "inverse": container.noop,
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 3,
+                    "column": 0
+                },
+                "end": {
+                    "line": 5,
+                    "column": 9
+                }
+            }
+        })) != null ? stack1 : "";
+    },
+    "3": function(container, depth0, helpers, partials, data) {
+        var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
+            return undefined;
+        };
+        return (stack1 = container.invokePartial(lookupProperty(partials, "input"), depth0, {
+            "name": "input",
+            "hash": {
+                "name": depth0 != null ? lookupProperty(depth0, "name") : depth0,
+                "placeholder": depth0 != null ? lookupProperty(depth0, "placeholder") : depth0
+            },
+            "data": data,
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "";
+    },
+    "5": function(container, depth0, helpers, partials, data) {
+        var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
+            return undefined;
+        };
+        return (stack1 = container.invokePartial(lookupProperty(partials, "button"), depth0, {
+            "name": "button",
+            "hash": {
+                "type": "button"
+            },
             "data": data,
             "helpers": helpers,
             "partials": partials,

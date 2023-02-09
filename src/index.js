@@ -3,6 +3,7 @@ import './components/ui/inputField';
 import './components/ui/button';
 import './components/sections/pageError';
 import './components/sections/layoutProfile';
+import './components/sections/layoutModal';
 import './pages/page404';
 import login from './pages/login/login.hbs';
 import singup from './pages/singup/singup.hbs';
@@ -10,6 +11,7 @@ import page404 from './pages/page404/page404.hbs';
 import page500 from './pages/page500/page500.hbs';
 import profile from './pages/profile/profile.hbs';
 import profileEdit from './pages/profileEdit/profileEdit.hbs';
+import profilePassword from './pages/profilePassword/profilePassword.hbs';
 import avatar from '../public/images/union.png';
 import back from '../public/images/back.png';
 
@@ -18,12 +20,8 @@ var handlebars = require('handlebars'),
 
 layout.register(handlebars);
 
-
-
 function render(html) {
 	const app = document.querySelector('#app');
-	console.log('app', app);
-
 	app.innerHTML = html;
 };
 
@@ -107,7 +105,7 @@ const PROPS = {
 		avatar: avatar,
 		back: back,
 		UserName: 'Олегuu',
-		lable: "сохранить",
+		lable: "Cохранить",
 		primary: "primary",
 		fields: [
 			{
@@ -136,6 +134,27 @@ const PROPS = {
 			}
 		]
 	},
+	'profilePassword': {
+		avatar: avatar,
+		back: back,
+		UserName: 'Олег',
+		lable: "Cохранить",
+		primary: "primary",
+		fields: [
+			{
+				name: "oldPassword",
+				placeholder: "Старый пароль",
+			},
+			{
+				name: "newPassword",
+				placeholder: "Новый пароль",
+			},
+			{
+				name: "newPassword",
+				placeholder: "Повторите новый пароль",
+			},
+		]
+	}
 }
 
 const ROUTES = {
@@ -145,6 +164,7 @@ const ROUTES = {
 	'page500': page500,
 	'profile': profile,
 	'profileEdit': profileEdit,
+	'profilePassword': profilePassword,
 };
 
 window.goToPage = function (namePage) {
@@ -154,5 +174,7 @@ window.goToPage = function (namePage) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+
 	render(ROUTES.profile(PROPS.profile));
 })
+
