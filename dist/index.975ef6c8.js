@@ -734,7 +734,7 @@ window.goToPage = function(namePage) {
     render(page(props));
 };
 window.addEventListener("DOMContentLoaded", ()=>{
-    render(ROUTES.profile(PROPS.profile));
+    render(ROUTES.profilePassword(PROPS.profilePassword));
 });
 
 },{"./components/ui/input":"aDUJw","./components/ui/inputField":"kJDvv","./components/ui/button":"3tAoj","./components/sections/pageError":"i0fcA","./components/sections/layoutProfile":"lKlhR","./components/sections/layoutModal":"fT6Dx","./pages/page404":"2iYub","./pages/login/login.hbs":"eP1jN","./pages/singup/singup.hbs":"bngWi","./pages/page404/page404.hbs":"fxfii","./pages/page500/page500.hbs":"5GS3z","./pages/profile/profile.hbs":"hpzTq","./pages/profileEdit/profileEdit.hbs":"WY7Kp","./pages/profilePassword/profilePassword.hbs":"dXY7Z","../public/images/union.png":"fv1FC","../public/images/back.png":"8oIgc","a7ba6f611299c72":"i0QfX","75d9534a10bbd30f":"2m7X9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aDUJw":[function(require,module,exports) {

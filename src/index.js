@@ -14,6 +14,7 @@ import profileEdit from './pages/profileEdit/profileEdit.hbs';
 import profilePassword from './pages/profilePassword/profilePassword.hbs';
 import avatar from '../public/images/union.png';
 import back from '../public/images/back.png';
+import main from './pages/main/main.hbs';
 
 var handlebars = require('handlebars'),
 	layout = require('handlebars-layouts');
@@ -165,6 +166,7 @@ const ROUTES = {
 	'profile': profile,
 	'profileEdit': profileEdit,
 	'profilePassword': profilePassword,
+	'main': main,
 };
 
 window.goToPage = function (namePage) {
@@ -175,6 +177,6 @@ window.goToPage = function (namePage) {
 
 window.addEventListener('DOMContentLoaded', () => {
 
-	render(ROUTES.profile(PROPS.profile));
+	render(ROUTES.profilePassword(PROPS.profilePassword));
 })
 
