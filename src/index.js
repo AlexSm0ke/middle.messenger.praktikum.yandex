@@ -177,6 +177,6 @@ window.goToPage = function (namePage) {
 
 window.addEventListener('DOMContentLoaded', () => {
 
-	render(ROUTES.profilePassword(PROPS.profilePassword));
+	render(ROUTES.login(PROPS.login));
 })
 
