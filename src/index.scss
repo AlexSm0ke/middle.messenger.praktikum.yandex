@@ -1,0 +1,24 @@
+@import './styles/globals.scss';
+@import './components/ui/input/input.scss';
+@import './components/ui/inputField/inputField.scss';
+@import './components/ui/button/button.scss';
+@import './pages/login/login.scss';
+@import './pages/singup/singup.scss';
+@import './pages/profile/profile.scss';
+@import './components/sections/pageError/pageError.scss';
+@import './components/sections/layoutProfile/layoutProfile.scss';
+@import './components/sections/layoutModal/layoutModal.scss';
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {}
+
+// $background-red: red;
+
+// #root {
+// 	color: $background-red;
+// }
