@@ -5,6 +5,7 @@ import './components/sections/pageError';
 import './components/sections/layoutProfile';
 import './components/sections/layoutModal';
 import './pages/page404';
+import './components/sections/routers';
 import login from './pages/login/login.hbs';
 import singup from './pages/singup/singup.hbs';
 import page404 from './pages/page404/page404.hbs';
@@ -12,8 +13,8 @@ import page500 from './pages/page500/page500.hbs';
 import profile from './pages/profile/profile.hbs';
 import profileEdit from './pages/profileEdit/profileEdit.hbs';
 import profilePassword from './pages/profilePassword/profilePassword.hbs';
-import avatar from '../public/images/union.png';
-import back from '../public/images/back.png';
+// import avatar from '../public/images/union.png';
+// import back from '../public/images/back.png';
 import main from './pages/main/main.hbs';
 
 var handlebars = require('handlebars'),
@@ -63,8 +64,8 @@ const PROPS = {
 	'page404': {},
 	'page500': {},
 	'profile': {
-		avatar: avatar,
-		back: back,
+		// avatar: avatar,
+		// back: back,
 		UserName: 'Александр',
 		fields: [
 			{
@@ -103,8 +104,8 @@ const PROPS = {
 		]
 	},
 	'profileEdit': {
-		avatar: avatar,
-		back: back,
+		// avatar: avatar,
+		// back: back,
 		UserName: 'Олегuu',
 		lable: "Cохранить",
 		primary: "primary",
@@ -136,8 +137,8 @@ const PROPS = {
 		]
 	},
 	'profilePassword': {
-		avatar: avatar,
-		back: back,
+		// avatar: avatar,
+		// back: back,
 		UserName: 'Олег',
 		lable: "Cохранить",
 		primary: "primary",
