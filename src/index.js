@@ -77,8 +77,8 @@ const PROPS = {
 				data: "IvanTheBest",
 			},
 			{
-				nameField: "first_name",
-				data: profile.UserName,
+				nameField: "Имя",
+				data: "Александр",
 			},
 
 			{
@@ -127,7 +127,7 @@ const PROPS = {
 				placeholder: "Фамилия",
 			},
 			{
-				name: "nameForChat",
+				name: "display_name",
 				placeholder: "Имя в чате",
 			},
 			{

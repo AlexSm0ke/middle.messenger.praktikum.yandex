@@ -9,16 +9,16 @@
 	line-height: 14px;
 	font-weight: bold;
 	outline: 0 none;
-	color: #6D0070;
-	border: solid 1px #6D0070;
+	color: var(--color-primary);
+	border: solid 1px var(--color-primary);
 	border-radius: 8px;
-	background: white;
+	background: var(--color-white);
 	cursor: pointer;
 	transition-duration: 0.3s;
 	transition-timing-function: ease;
 
 	&-primary {
-		background: #6D0070;
-		color: white;
+		background: var(--color-primary);
+		color: var(--color-white);
 	}
 }

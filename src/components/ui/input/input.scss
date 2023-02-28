@@ -8,19 +8,19 @@
 	display: block;
 	width: 100%;
 	height: 50px;
-	border: 1px solid #6D0070;
+	border: 1px solid var(--color-primary);
 	opacity: 0.7;
 	border-radius: 8px;
-	background: white;
+	background: var(--color-white);
 	overflow: hidden;
 
 	&:focus {
-		border-color: black;
+		border-color: var(--color-black);
 		text-overflow: inherit;
 	}
 
 	&-error {
-		border-color: red;
+		border-color: var(--color-red);
 	}
 }
 
@@ -28,15 +28,15 @@
 
 .input-container__placeholder {
 	position: absolute;
-	background-color: white;
-	color: #6D0070;
+	background-color: var(--color-white);
+	color: var(--color-primary);
 	top: 16px;
 	left: 16px;
 
 	&_modified {
 		position: absolute;
-		background-color: white;
-		color: #6D0070;
+		background-color: var(--color-white);
+		color: var(--color-primary);
 		padding: 0 5px;
 		top: -7px;
 		left: 7px;
@@ -56,7 +56,7 @@
 
 .input-container__error {
 	display: none;
-	color: red;
+	color: var(--color-red);
 
 	&-active {
 		display: block;

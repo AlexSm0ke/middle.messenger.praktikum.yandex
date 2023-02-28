@@ -3,8 +3,8 @@
 	height: 257px;
 	text-align: center;
 	display: block;
-	background: #FFFFFF;
-	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+	background: var(--color-white);
+	box-shadow: 0px 0px 6px var(--box-shadow-modal);
 	border: 0;
 	border-radius: 12px;
 	top: 50%;
@@ -17,12 +17,12 @@
 	position: fixed;
 
 	&::backdrop {
-		background-color: fuchsia;
+		background-color: var(--color-fuchsia);
 	}
 }
 
 .modal::backdrop {
-	background-color: fuchsia;
+	background-color: var(--color-fuchsia);
 }
 
 .modal[open] {
@@ -45,7 +45,7 @@
 	font-weight: bold;
 
 	&.error {
-		color: red;
+		color: var(--color-red);
 	}
 }
 
@@ -56,6 +56,6 @@
 }
 
 .modal__error {
-	color: red;
+	color: var(--color-red);
 	margin: 10px;
 }

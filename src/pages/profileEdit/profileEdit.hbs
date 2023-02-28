@@ -1,10 +1,12 @@
 {{#extend "routers" }}
 {{/extend}}
 {{#extend "layoutProfile" }}
-{{#content "body"}}
-{{#each fields}}
-{{> input placeholder=placeholder name=name}}
-{{/each}}
-{{/content}}
-{{#content "footer"}}{{> button type="button"}}{{/content}}
+<form>
+	{{#content "body"}}
+	{{#each fields}}
+	{{> input placeholder=placeholder name=name}}
+	{{/each}}
+	{{/content}}
+	{{#content "footer"}}{{> button type="submit"}}{{/content}}
+</form>
 {{/extend}}
