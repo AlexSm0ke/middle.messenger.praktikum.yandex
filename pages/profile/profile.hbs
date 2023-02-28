@@ -1,0 +1,21 @@
+{{#extend "layoutProfile" }}
+{{#content "body"}}
+{{#each fields}}
+<div class="profile-field">
+	<div class="profile-field__lable">{{nameField}}</div>
+	<div class="profile-field__data">{{data}}</div>
+</div>
+{{/each}}
+{{/content}}
+{{#content "footer"}}
+{{#each options}}
+<div class="profile-options__edit">
+	<a href="#" class="profile-options__lable">{{lable}}</a>
+</div>
+{{/each}}
+<a onclick="goToPage('profileEdit')" href="#" class="profile-options__exit">Выйти</a>
+
+{{/content}}
+{{/extend}}
+{{#extend "layoutModal"}}
+{{/extend}}
