@@ -1,18 +1,17 @@
-{{#extend "routers" }}
-{{/extend}}
-<div class="container-singup">
-	<form class="login-form" action="login">
-		<div class="login-form__header">Регистрация</div>
-		{{#each fields}}
-		{{> input placeholder=placeholder name=name textError=textError}}
-		{{/each}}
-		<div class="login-form__items">
-			<div class="login-form__item">
-				{{> button primary="primary" lable="ЗАРЕГИСТРИРОВАТЬСЯ"}}
-			</div>
-			<div onclick="goToPage('login')" class="login-form__item">
-				{{> button type="button" lable="ВОЙТИ"}}
-			</div>
+{{!-- {{#extend "routers" }}
+{{/extend}} --}}
+
+<form class="login-form" action="login">
+	<div class="login-form__header">Регистрация</div>
+	{{!-- {{{inputsw}}} --}}
+	{{#each inputs}}
+	{{{this}}}
+	{{/each}}
+	<div class="login-form__items">
+		{{#each buttons}}
+		<div class="login-form__item">
+			{{{this}}}
 		</div>
-	</form>
-</div>
+		{{/each}}
+	</div>
+</form>

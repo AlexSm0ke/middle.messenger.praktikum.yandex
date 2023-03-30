@@ -1,12 +1,84 @@
 :root {
-	--color-primary: #6D0070;
-	--color-primary-border: #6c007070;
-	--color-white: white;
-	--color-red: red;
-	--color-black: black;
+	/* COLORS */
+	--color-white: #FFFFFF;
+	--color-gray-1: #EAEAF2;
+	--color-gray-2: #8893A6;
+	--color-gray-3: #495767;
+	--color-gray-4: #121A23;
+	--color-black: #000000;
+
+	--color-blue-light: #DCECFF;
+	--color-blue: #3369F3;
+	--color-blue-dark: #0350A8;
+	--color-red-light: #FFE5EA;
+	--color-red: #E31C1C;
+	--color-red-dark: #B80020;
+	--color-green-light: #DDF3E4;
+	--color-green: #4CAF50;
+	--color-green-dark: #2F6A31;
+	--color-orange-light: #FFE0B3;
+	--color-orange: #FF9900;
+	--color-orange-dark: #CC7A00;
+	--color-violet-light: #DABEF4;
+	--color-purple: #6D0070;
+	--color-purple-dark: #6c007070;
+	--color-purple-light: #ab00b1;
+	--color-cyan-light: #C1F0F0;
+	--color-cyan: #2EB8B8;
+	--color-cyan-dark: #248F8F;
+	--color-crimson-light: #FFD6E7;
+	--color-crimson: #FF307C;
+	--color-crimson-dark: #D10065;
 	--color-fuchsia: fuchsia;
+
+
+
+	/* THEME COLORS */
+	--primary: var(--color-purple);
+	--secondary: var(--color-crimson);
+	--danger: var(--color-red);
+	--success: var(--color-green);
+	--warning: var(--color-orange);
+	--info: var(--color-cyan);
+	--white: var(--color-white);
+	--light: var(--color-gray-1);
+	--silver: var(--color-gray-2);
+	--gray: var(--color-gray-3);
+	--dark: var(--color-gray-4);
+	--black: var(--color-black);
+
+	--btn-primary-color: var(--primary);
+	--btn-primary-color-hover: #8a008f;
+
 
 	--box-shadow-login: rgba(85, 11, 119, 0.14);
 	--box-shadow-modal: rgba(0, 0, 0, 0.14);
 
+
+
+
+
+	/* SPACING */
+	--spacing-1: 1px;
+	--spacing-2: calc(2 * var(--spacing-1));
+	--spacing-3: calc(3 * var(--spacing-1));
+	--spacing-4: calc(4 * var(--spacing-1));
+	--spacing-5: calc(5 * var(--spacing-1));
+	--spacing-6: calc(6 * var(--spacing-1));
+	--spacing-7: calc(7 * var(--spacing-1));
+	--spacing-8: calc(8 * var(--spacing-1));
+	--spacing-9: calc(9 * var(--spacing-1));
+	--spacing-10: calc(10 * var(--spacing-1));
+	--spacing-11: calc(11 * var(--spacing-1));
+	--spacing-12: calc(12 * var(--spacing-1));
+	--spacing-13: calc(13 * var(--spacing-1));
+	--spacing-14: calc(14 * var(--spacing-1));
+	--spacing-15: calc(15 * var(--spacing-1));
+	--spacing-16: calc(16 * var(--spacing-1));
+	--spacing-17: calc(17 * var(--spacing-1));
+	--spacing-18: calc(18 * var(--spacing-1));
+	--spacing-19: calc(19 * var(--spacing-1));
+	--spacing-20: calc(20 * var(--spacing-1));
+	--spacing-25: calc(25 * var(--spacing-1));
+	--spacing-30: calc(30 * var(--spacing-1));
 }

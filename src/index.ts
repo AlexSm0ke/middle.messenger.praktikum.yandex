@@ -15,7 +15,11 @@ import profileEdit from './pages/profileEdit/profileEdit.hbs';
 import profilePassword from './pages/profilePassword/profilePassword.hbs';
 // import avatar from '../public/images/union.png';
 // import back from '../public/images/back.png';
-import main from './pages/main/main.hbs';
+import chat from './pages/chat/chat.hbs';
+import { Login } from './pages/login';
+import { SingUp } from './pages/singup';
+import { ChatSidebar } from './components/sections/chatSidebar';
+import { ChatPage } from './pages/chat';
 
 var handlebars = require('handlebars'),
 	layout = require('handlebars-layouts');
@@ -28,7 +32,7 @@ function render(html) {
 };
 
 const PROPS = {
-	'login': {},
+
 	'singup': {
 		fields: [
 			{
@@ -167,7 +171,7 @@ const ROUTES = {
 	'profile': profile,
 	'profileEdit': profileEdit,
 	'profilePassword': profilePassword,
-	'main': main,
+	'chat': chat,
 };
 
 window.goToPage = function (namePage) {
@@ -178,6 +182,18 @@ window.goToPage = function (namePage) {
 
 window.addEventListener('DOMContentLoaded', () => {
 
-	render(ROUTES.login(PROPS.login));
+	// render(ROUTES.login(PROPS.login));
+
+
+	const app = document.querySelector('#app');
+	const loginPage = new Login({});
+	const singUp = new SingUp({});
+	const chatSidebar = new ChatSidebar({});
+	const chatPage = new ChatPage({});
+	// const singUp = new SingUp({});
+
+
+	// app!.innerHTML = loginPage.element!.outerHTML;
+	app!.appendChild(chatPage.element as HTMLElement);
 })
 

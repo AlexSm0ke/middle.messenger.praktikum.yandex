@@ -31,7 +31,7 @@
 	border-radius: 50%;
 	overflow: hidden;
 	box-sizing: border-box;
-	background: var(--color-primary);
+	background: var(--color-purple);
 	opacity: 0.6;
 	cursor: pointer;
 
@@ -83,7 +83,7 @@ form {
 	cursor: pointer;
 
 	&:hover {
-		background: var(--color-primary);
+		background: var(--color-purple);
 		opacity: 0.5;
 		transition: 0.3s;
 	}
