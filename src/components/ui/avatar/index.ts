@@ -4,19 +4,20 @@ import "./avatar.scss";
 
 interface IAvatar {
 	// size?: "m" | "lg";
-	content?: Block | string;
+	data?: Block | string;
 }
 
 class Avatar extends Block {
 	constructor(props?: IAvatar) {
 		super('div', props);
-		this.element!.classList.add('avatar');
 	}
 
 	init() {
-		// console.log('this.props', this.props.content);
+		this.element!.classList.add('avatar');
 
-		// this.children.content = (this.props.content ? this.props.content : );
+		// console.log('this.props', this.props.data);
+
+		// this.children.content = (this.props.data ? this.props.data : );
 	}
 
 	render() {

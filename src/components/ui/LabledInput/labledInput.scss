@@ -5,7 +5,7 @@
 }
 
 
-.label {
+.form-group {
 	height: 50px;
 	position: relative;
 	width: 100%;
@@ -44,7 +44,7 @@
 		}
 	}
 
-	&>.error {
+	&>.input-error {
 		color: var(--color-red);
 		position: absolute;
 		font-size: 10px;

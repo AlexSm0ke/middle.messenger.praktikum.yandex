@@ -1,0 +1,23 @@
+.list {
+	& .list-item {
+		display: flex;
+		align-items: center;
+		height: 32px;
+	}
+
+	&.list-flush {
+		& .list-item {
+			border-bottom-width: 1px;
+			border-bottom-style: solid;
+			border-bottom-color: var(--light);
+		}
+
+		& .list-item:last-child {
+			border-bottom-color: transparent;
+		}
+	}
+
+	&.list-full {
+		width: 100%;
+	}
+}

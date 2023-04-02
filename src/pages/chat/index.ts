@@ -1,7 +1,9 @@
+import Block from "../../utils/Block";
 import template from './chat.hbs';
 import { ChatSidebar } from "../../components/sections/chatSidebar";
-import Block from "../../utils/Block";
 import { ChatHeader } from '../../components/sections/chatHeader';
+import ChatFooter from '../../components/sections/chatFooter';
+import ChatMessage from '../../components/sections/chatMessage';
 import './chat.scss';
 
 interface IChatPageProps {
@@ -10,15 +12,17 @@ interface IChatPageProps {
 	footer?: Block;
 }
 
-export class ChatPage extends Block {
+class Chat extends Block {
 	constructor(props: IChatPageProps) {
 		super('div', props);
-		this.element!.classList.add('wrapper');
+		this.element!.classList.add('wraper');
 	}
 
 	init() {
 		this.children.sidebar = new ChatSidebar({});
 		this.children.header = new ChatHeader({})
+		this.children.messageArea = new ChatMessage({})
+		this.children.footer = new ChatFooter({})
 
 	}
 
@@ -27,3 +31,6 @@ export class ChatPage extends Block {
 	}
 }
 
+const ChatPage = new Chat({});
+
+export default ChatPage;

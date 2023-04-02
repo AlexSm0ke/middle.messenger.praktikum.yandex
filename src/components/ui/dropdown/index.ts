@@ -77,7 +77,7 @@ class Dropdown extends Block {
 			isRound: this.props.dropdownButtonIsRound,
 			isOutline: this.props.dropdownButtonIsOutline,
 			isLink: this.props.dropdownButtonIsOutline,
-			content: this.props.dropdownButtonContent,
+			data: this.props.dropdownButtonContent,
 			events: {
 				click: dropdownHandler
 			}

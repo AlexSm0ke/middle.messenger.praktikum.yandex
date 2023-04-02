@@ -1,23 +1,26 @@
 import template from './button.hbs';
 // import Handlebars from 'handlebars/dist/handlebars.runtime';
 import Block from '../../../utils/Block';
+import './button.scss'
 
 // Handlebars.registerPartial('button', button);
 
 interface ButtonProps {
 	className?: string;
 	id?: string;
-	size?: "sm" | "lg" | "xl";
-	color?: "primary" | "secondary" | "light";
+	size?: 'sm' | 'lg' | 'xl';
+	color?: 'primary' | 'secondary' | 'light';
 	isOutline?: boolean;
 	isLink?: boolean;
 	isFluid?: boolean;
 	isRound?: boolean;
 	isCircle?: boolean;
 	isSquare?: boolean;
-	content?: Block | string;
+	data?: Block | string;
+	type?: string;
 	events?: {
 		click?: (e: Event) => void;
+		submit?: (e: Event) => void;
 	}
 };
 

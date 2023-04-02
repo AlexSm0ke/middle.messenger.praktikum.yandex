@@ -21,16 +21,16 @@ export class ChatHeader extends Block {
 	init() {
 		this.children.userBlock = new DivBlock({
 			className: 'user-group-block',
-			content: [
+			data: [
 				new DivBlock({
 					className: 'avatar-group',
-					content: new Avatar({
-						content: '<img src="http://htmlbook.ru/images/logo.gif" width="450" height="450" alt="Фото">'
+					data: new Avatar({
+						data: '<img src="http://htmlbook.ru/images/logo.gif" width="450" height="450" alt="Фото">'
 					})
 				}),
 				new DivBlock({
 					className: 'user-block__name',
-					content: 'Евлампий'
+					data: 'Евлампий'
 				})
 			],
 			events: {
@@ -44,17 +44,17 @@ export class ChatHeader extends Block {
 			dropdownButtonContent: 'строка',
 			dropdownMenuContent: new DivBlock({
 				className: 'dropdown-menu__content',
-				content: [
+				data: [
 					new DivBlock({
 						className: 'dropdown-item',
-						content: new Avatar({
-							content: 'Добавить'
+						data: new Avatar({
+							data: 'Добавить'
 						})
 						// [
 						//     // new IconAdd({ color: 'primary' }),
 
 						//     new Text({
-						//         content: 'Добавить пользователя'
+						//         data: 'Добавить пользователя'
 						//     })
 						// ]
 						,
@@ -64,7 +64,7 @@ export class ChatHeader extends Block {
 					}),
 					new DivBlock({
 						className: 'dropdown-item',
-						content: 'Удалить пользователя',
+						data: 'Удалить пользователя',
 						// [
 						// 	new IconDelete({ color: 'primary' }),
 						// 	new Text({

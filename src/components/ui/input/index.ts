@@ -1,11 +1,17 @@
 import Block from '../../../utils/Block';
 import template from './input.hbs';
+import './input.scss'
 
 interface IProps {
 	id: string;
 	name: string;
+	className?: string;
 	type?: string;
 	placeholder?: string;
+	events?: {
+		blur?: (e: Event) => void;
+		focus?: (e: Event) => void;
+	}
 }
 
 class Input extends Block<IProps> {
@@ -14,6 +20,7 @@ class Input extends Block<IProps> {
 	}
 
 	init(): void {
+		if (this.props.className) this.element!.classList.add(this.props.className)
 		this.element!.setAttribute('id', this.props.id);
 		this.element!.setAttribute('name', this.props.name);
 		this.element!.setAttribute(

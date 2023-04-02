@@ -4,7 +4,7 @@ import template from './div.hbs';
 
 interface IDivBlock {
 	className?: string;
-	content: Block | Block[] | string;
+	data: Block | Block[] | string | string[];
 	events?: {
 		click: (e: Event) => void;
 	}
@@ -12,16 +12,15 @@ interface IDivBlock {
 
 export class DivBlock extends Block {
 	constructor(props: IDivBlock) {
-		const isArray = Array.isArray(props.content);
-		console.log('props.content<><><><>', props.content);
+		const isArray = Array.isArray(props.data);
 
 		super('div', { ...props, isArray });
 		this.element!.classList.add(this.props.className);
 	}
 
 	init() {
-		// // this.children.content = this.props.content;
-		// const isArray: boolean = Array.isArray(this.props.content);
+		// this.children.content = this.props.data;
+		// const isArray: boolean = Array.isArray(this.props.data);
 		// this.props.isArray = isArray;
 
 	}

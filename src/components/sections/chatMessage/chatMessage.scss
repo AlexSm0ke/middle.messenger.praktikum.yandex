@@ -1,0 +1,14 @@
+.chat-container {
+	width: 100%;
+	padding: 80px 20px;
+	min-height: 100vh;
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	&.empty {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}

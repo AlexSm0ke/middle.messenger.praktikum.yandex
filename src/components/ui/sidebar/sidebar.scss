@@ -1,0 +1,16 @@
+.sideBar {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--color-white);
+	height: 100vh;
+	width: 64px;
+	cursor: pointer;
+
+	&:hover {
+		background: var(--color-purple);
+		opacity: 0.5;
+		transition: 0.3s;
+	}
+}
