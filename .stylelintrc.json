@@ -7,5 +7,6 @@
 	},
 	"ignoreFiles": [
 		"build/*"
-	]
+	],
+	"customSyntax": "postcss"
 }
