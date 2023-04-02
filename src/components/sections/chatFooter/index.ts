@@ -65,7 +65,7 @@ class ChatFooter extends Block {
 			name: 'message',
 			placeholder: 'Сообщение',
 			events: {
-				blur: (event: Event) => validateInput(event.target as HTMLInputElement);
+				blur: (event: Event) => validateInput(event.target as HTMLInputElement),
 			}
 		});
 
