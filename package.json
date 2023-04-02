@@ -6,7 +6,8 @@
 		"dev": "parcel index.html --no-cache --open",
 		"start": "parcel build index.html --no-cache && node ./server.js",
 		"build": "parcel build index.html --no-cache",
-		"scss": "node-sass -watch scss -o css"
+		"scss": "node-sass -watch scss -o css",
+		"stylelint": "stylelint '**/*.scss'"
 	},
 	"keywords": [],
 	"author": "",

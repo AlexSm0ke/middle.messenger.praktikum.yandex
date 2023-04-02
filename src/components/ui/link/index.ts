@@ -1,6 +1,6 @@
 import Block from "../../../utils/Block";
 import template from "./link.hbs";
-import "./link.scss";
+// import "./link.scss";
 
 interface IList {
 	class?: string,

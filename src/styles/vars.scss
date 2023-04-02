@@ -1,3 +1,5 @@
+/* stylelint-disable */
+
 :root {
 	/* COLORS */
 	--color-white: #FFFFFF;
@@ -82,3 +84,5 @@
 	--spacing-25: calc(25 * var(--spacing-1));
 	--spacing-30: calc(30 * var(--spacing-1));
 }
+
+/* stylelint-enable */

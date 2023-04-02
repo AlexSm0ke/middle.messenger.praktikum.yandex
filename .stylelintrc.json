@@ -1,13 +1,9 @@
 {
 	"extends": "stylelint-config-standard",
 	"rules": {
-		"color-hex-case": "lower",
-		"property-no-vendor-prefix": [
-			true,
-			{
-				"severity": "warning"
-			}
-		]
+		"selector-class-pattern": null,
+		"no-duplicate-selectors": null,
+		"no-descending-specificity": null
 	},
 	"ignoreFiles": [
 		"build/*"

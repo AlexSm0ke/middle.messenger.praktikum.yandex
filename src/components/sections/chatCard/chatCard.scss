@@ -1,3 +1,4 @@
+/* stylelint-disable */
 .chat-card {
 	display: flex;
 	width: 100%;
@@ -8,7 +9,6 @@
 
 	&:hover,
 	&.active {
-		// background-color: var(--chat-card-background-color-hover);
 		background-color: rgba(165, 0, 180, 0.301);
 		cursor: pointer;
 	}
