@@ -1,4 +1,5 @@
 import Block from '../../../utils/Block';
+import { validateInput } from '../../../utils/validations';
 import { Button } from '../../ui/button';
 import DivBlock from '../../ui/div';
 import Dropdown from '../../ui/dropdown';
@@ -62,9 +63,9 @@ class ChatFooter extends Block {
 			className: 'input-search',
 			id: 'message',
 			name: 'message',
-			placeholder: 'Сообщение'
+			placeholder: 'Сообщение',
 			events: {
-				blur: (event: Event) => validateInput(event.target as HTMLInputElement)
+				blur: (event: Event) => validateInput(event.target as HTMLInputElement);
 			}
 		});
 
