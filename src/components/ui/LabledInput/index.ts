@@ -1,5 +1,5 @@
 import Block from '../../../utils/Block';
-import template from './LabledInput.hbs';
+import template from './labledInput.hbs';
 import Input from '../input';
 import './labledInput.scss'
 
