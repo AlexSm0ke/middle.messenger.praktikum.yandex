@@ -11,7 +11,7 @@
     "noUnusedParametrs": true,
     "lib": [
       "ESNext",
-      "DOM",
+      "DOM"
     ]
   }
 }

@@ -63,6 +63,9 @@ class ChatFooter extends Block {
 			id: 'message',
 			name: 'message',
 			placeholder: 'Сообщение'
+			events: {
+				blur: (event: Event) => validateInput(event.target as HTMLInputElement)
+			}
 		});
 
 		this.children.buttonSend = new Button({
