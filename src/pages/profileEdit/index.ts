@@ -5,6 +5,7 @@ import { LabledInput } from "../../components/ui/LabledInput";
 import Sidebar from "../../components/ui/sidebar";
 import Block from "../../utils/Block";
 import template from "./profileEdit.hbs";
+import { validateInput } from '../../utils/validations';
 import './profileEdit.scss';
 
 interface IProfileEditProps {
@@ -76,7 +77,10 @@ class ProfileEdit extends Block {
 				id: field.id,
 				name: field.name,
 				placeholder: field.placeholder,
-				value: field.value
+				value: field.value,
+				events: {
+					blur: (event) => validateInput(event.target as HTMLInputElement)
+				}
 			});
 		})
 
