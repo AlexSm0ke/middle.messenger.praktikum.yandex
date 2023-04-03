@@ -15,9 +15,9 @@
 	margin: 0 var(--spacing-10);
 	height: 100%;
 	border: 0;
+	border-bottom: var(--light);
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
-	border-bottom-color: var(--light);
 }
 
 .chat-header__container__content {
@@ -58,7 +58,7 @@
 
 	& .avatar {
 		position: relative;
-		border: 2px solid #fff;
+		border: 2px solid #FFF;
 		overflow: hidden;
 	}
 
@@ -70,8 +70,6 @@
 		display: block;
 	}
 }
-
-.user-list {}
 
 .user-list__info-item {
 	display: flex;

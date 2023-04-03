@@ -1,14 +1,11 @@
-/* stylelint-disable */
-
 :root {
 	/* COLORS */
-	--color-white: #FFFFFF;
+	--color-white: #FFF;
 	--color-gray-1: #EAEAF2;
 	--color-gray-2: #8893A6;
 	--color-gray-3: #495767;
 	--color-gray-4: #121A23;
-	--color-black: #000000;
-
+	--color-black: #000;
 	--color-blue-light: #DCECFF;
 	--color-blue: #3369F3;
 	--color-blue-dark: #0350A8;
@@ -19,12 +16,12 @@
 	--color-green: #4CAF50;
 	--color-green-dark: #2F6A31;
 	--color-orange-light: #FFE0B3;
-	--color-orange: #FF9900;
+	--color-orange: #F90;
 	--color-orange-dark: #CC7A00;
 	--color-violet-light: #DABEF4;
 	--color-purple: #6D0070;
-	--color-purple-dark: #6c007070;
-	--color-purple-light: #ab00b1;
+	--color-purple-dark: #6C007070;
+	--color-purple-light: #AB00B1;
 	--color-cyan-light: #C1F0F0;
 	--color-cyan: #2EB8B8;
 	--color-cyan-dark: #248F8F;
@@ -48,16 +45,10 @@
 	--gray: var(--color-gray-3);
 	--dark: var(--color-gray-4);
 	--black: var(--color-black);
-
 	--btn-primary-color: var(--primary);
-	--btn-primary-color-hover: #8a008f;
-
-
-	--box-shadow-login: rgba(85, 11, 119, 0.14);
-	--box-shadow-modal: rgba(0, 0, 0, 0.14);
-
-
-
+	--btn-primary-color-hover: #8A008F;
+	--box-shadow-login: rgb(85 11 119 14%);
+	--box-shadow-modal: rgb(0 0 0 14%);
 
 
 	/* SPACING */
@@ -84,5 +75,3 @@
 	--spacing-25: calc(25 * var(--spacing-1));
 	--spacing-30: calc(30 * var(--spacing-1));
 }
-
-/* stylelint-enable */

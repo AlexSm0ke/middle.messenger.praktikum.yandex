@@ -15,9 +15,9 @@
 	margin: 0 var(--spacing-10);
 	height: 100%;
 	border: 0;
+	border-top: var(--light);
 	border-top-width: 1px;
 	border-top-style: solid;
-	border-top-color: var(--light);
 }
 
 .chat-footer__container__content {

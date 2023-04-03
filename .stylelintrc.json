@@ -1,12 +1,11 @@
 {
-	"extends": "stylelint-config-standard",
+	"extends": "stylelint-config-standard-scss",
 	"rules": {
+		"color-hex-case": "upper",
 		"selector-class-pattern": null,
-		"no-duplicate-selectors": null,
-		"no-descending-specificity": null
+		"scss/no-global-function-names": null
 	},
 	"ignoreFiles": [
-		"dist/"
-	],
-	"customSyntax": "postcss"
+		"dist/*"
+	]
 }

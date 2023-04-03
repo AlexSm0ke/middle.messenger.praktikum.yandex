@@ -1,4 +1,3 @@
-/* stylelint-disable */
 .list {
 	& .list-item {
 		display: flex;
@@ -8,13 +7,13 @@
 
 	&.list-flush {
 		& .list-item {
+			border-bottom: var(--light);
 			border-bottom-width: 1px;
 			border-bottom-style: solid;
-			border-bottom-color: var(--light);
 		}
 
 		& .list-item:last-child {
-			border-bottom-color: transparent;
+			border-bottom: transparent;
 		}
 	}
 
@@ -22,5 +21,3 @@
 		width: 100%;
 	}
 }
-
-/* stylelint-enable */

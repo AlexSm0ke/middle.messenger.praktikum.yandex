@@ -1,7 +1,5 @@
-/* stylelint-disable */
-
-@import "fonts.scss";
-@import "vars.scss";
+@import './fonts';
+@import './vars';
 
 html,
 body,
@@ -14,9 +12,7 @@ body,
 
 html,
 body {
-    font-family: "ProximaNova", "Segoe UI",
-        "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-        "Helvetica Neue";
+    font-family: ProximaNova, Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
 * {
@@ -26,7 +22,7 @@ body {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
+    text-rendering: optimizelegibility;
 }
 
 .container {
@@ -36,5 +32,3 @@ body {
     justify-content: center;
     align-items: center;
 }
-
-/* stylelint-enable */

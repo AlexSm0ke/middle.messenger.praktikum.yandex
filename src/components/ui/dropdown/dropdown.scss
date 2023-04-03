@@ -1,17 +1,3 @@
-/* stylelint-disable */
-
-.dropdown {
-	position: relative;
-	display: inline-block;
-
-	&.up .dropdown-menu {
-		top: auto;
-		right: auto;
-		left: 0;
-		bottom: 150%;
-	}
-}
-
 .dropdown-menu {
 	min-width: 240px;
 	padding: var(--spacing-15);
@@ -24,6 +10,18 @@
 	overflow: auto;
 	box-shadow: var(--box-shadow-dropdown-menu);
 	z-index: 1;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+
+	&.up .dropdown-menu {
+		top: auto;
+		right: auto;
+		left: 0;
+		bottom: 150%;
+	}
 }
 
 .dropdown-menu .dropdown-item {
@@ -48,5 +46,3 @@
 .dropdown.show .dropdown-menu {
 	display: block;
 }
-
-/* stylelint-enable */
