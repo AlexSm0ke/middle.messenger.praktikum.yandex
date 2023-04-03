@@ -6,7 +6,7 @@
 		"no-descending-specificity": null
 	},
 	"ignoreFiles": [
-		"build/*"
+		"dist*"
 	],
 	"customSyntax": "postcss"
 }
