@@ -22,6 +22,7 @@
 	--color-purple: #6D0070;
 	--color-purple-dark: #6C007070;
 	--color-purple-light: #AB00B1;
+	--color-purple-transparent: #6c00703d;
 	--color-cyan-light: #C1F0F0;
 	--color-cyan: #2EB8B8;
 	--color-cyan-dark: #248F8F;
@@ -49,6 +50,9 @@
 	--btn-primary-color-hover: #8A008F;
 	--box-shadow-login: rgb(85 11 119 14%);
 	--box-shadow-modal: rgb(0 0 0 14%);
+
+	--chat-card-background-color: var(--white);
+	--chat-card-background-color-hover: var(--color-purple-transparent);
 
 
 	/* SPACING */

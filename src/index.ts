@@ -17,8 +17,6 @@ import Block from './utils/Block';
 
 const currentPath: string = window.location.pathname;
 
-// window.addEventListener('DOMContentLoaded', () => {
-
 const pages: { [key: string]: Block } = {
 	[routes.home.path]: MainPage,
 	[routes.login.path]: new LoginPage({}),
@@ -31,23 +29,11 @@ const pages: { [key: string]: Block } = {
 	[routes.error_500.path]: Page500
 }
 
-// const routing = {
-// 	'/': MainPage,
-// 	"/login": LoginPage,
-// 	"/register": SingUpPage,
-// 	"/chat": ChatPage,
-// 	"/profile": ProfilePage,
-// 	"/profile-edit": ProfileEditPage,
-// 	// "/password-edit":PasswordEditPage,
-// 	"/404": new ErrorPage({}),
-// 	"/500": Page500,
-// }
-
 const renderDOM = (elem: string, block: Block) => {
 	const root = document.querySelector(elem);
 
 	root!.innerHTML = '';
-	root!.appendChild(block.getContent());
+	root!.appendChild(block.getContent() as HTMLElement);
 	block.dispatchComponentDidMount();
 };
 
@@ -56,4 +42,3 @@ Object.entries(pages).forEach(([url, page]) => {
 		renderDOM('#app', page);
 	}
 });
-// })
