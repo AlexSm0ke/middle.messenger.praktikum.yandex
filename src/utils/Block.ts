@@ -166,7 +166,7 @@ class Block<P extends Record<string, any> = any> {
 
 	private _render() {
 		const fragment = this.render();
-		this._removeEvents();
+		// this._removeEvents();
 		this.element!.innerHTML = '';
 		this.element!.append(fragment);
 		this._addEvents();
