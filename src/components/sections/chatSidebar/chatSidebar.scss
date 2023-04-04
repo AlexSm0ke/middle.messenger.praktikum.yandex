@@ -1,0 +1,110 @@
+.chat-sidebar {
+    width: 320px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: var(--white);
+    border-right: var(--light);
+    border-right-width: 1px;
+    border-right-style: solid;
+    transition: all 0.3s;
+}
+
+.chat-sidebar__header,
+.chat-sidebar__search {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: var(--white);
+    border-bottom: var(--light);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.logo-container {
+    margin-right: auto;
+}
+
+.logo {
+    height: 28px;
+    width: 163px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0;
+    position: relative;
+}
+
+.logo-link a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.chat-sidebar__header {
+    height: 68px;
+    padding: 0 var(--spacing-10);
+    justify-content: space-between;
+
+    & .logo-container {
+        margin-left: var(--spacing-10);
+    }
+}
+
+.chat-sidebar__search {
+    height: 68px;
+    padding: 10px;
+    justify-content: center;
+}
+
+
+.chat-sidebar__content {
+    padding: 10px 0 10px 10px;
+    height: calc(100% - 204px);
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+}
+
+.chat-sidebar__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 68px;
+    background: var(--white);
+    border-top: var(--light);
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.menu-actions {
+    width: 100%;
+
+    & .nav {
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 var(--spacing-10);
+    }
+}
+
+.nav-link {
+    display: block;
+    padding: var(--spacing-8);
+
+    &:hover,
+    &.active {
+        border-radius: var(--spacing-10);
+        background-color: var(--nav-link-background-color-hover);
+        cursor: pointer;
+    }
+}

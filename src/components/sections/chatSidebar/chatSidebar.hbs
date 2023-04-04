@@ -1,0 +1,27 @@
+<div class="chat-sidebar__header">
+	<div class="logo-container">
+		<div class="logo">
+			{{#if logoLink}}
+			<a href="{{logoLink}}">Мессенджер</a>
+			{{/if}}
+		</div>
+	</div>
+	{{{newChatButton}}}
+</div>
+<div class="chat-sidebar__search">
+	{{{inputSearch}}}
+</div>
+<div class="chat-sidebar__content">
+	{{{chatList}}}
+</div>
+<div class="chat-sidebar__footer">
+	<div class="menu-actions">
+		<nav class="nav">
+			{{#if isArray}}
+			{{#each nav}}
+			<div class="nav-item">{{{this}}}</div>
+			{{/each}}
+			{{/if}}
+		</nav>
+	</div>
+</div>

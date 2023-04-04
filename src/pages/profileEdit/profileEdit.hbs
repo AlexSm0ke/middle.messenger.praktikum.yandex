@@ -1,12 +1,18 @@
-{{#extend "routers" }}
-{{/extend}}
-{{#extend "layoutProfile" }}
-<form>
-	{{#content "body"}}
-	{{#each fields}}
-	{{> input placeholder=placeholder name=name}}
-	{{/each}}
-	{{/content}}
-	{{#content "footer"}}{{> button type="submit"}}{{/content}}
-</form>
-{{/extend}}
+{{{sidebar}}}
+<div class="pageProfile__items">
+	<div class="pageProfile__avatar">
+		<div class="pageProfile__photo">
+			{{{avatar}}}
+			<span>поменять<br>аватар</span>
+		</div>
+		<div class="pageProfile__firstName">{{UserName}}</div>
+	</div>
+	<form action="">
+		{{#each profileFieldsEdit}}
+		{{{this}}}
+		{{/each}}
+		<div class="pageProfile__footer">
+			{{{buttonSave}}}
+		</div>
+	</form>
+</div>

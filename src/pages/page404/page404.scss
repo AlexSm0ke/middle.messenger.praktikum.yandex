@@ -1,1 +1,29 @@
+.pageError__container {
+	position: absolute;
+	width: 300px;
+	height: 300px;
+	top: 50%;
+	left: 50%;
+	margin: -150px 0 0 -150px;
+	display: flex;
+	justify-content: center;
+}
 
+.pageError__items {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.pageError__title {
+	font-size: 40px;
+	margin-bottom: 20px;
+
+}
+
+.pageError__text {
+	font-size: 20px;
+	margin-bottom: 20px;
+
+}

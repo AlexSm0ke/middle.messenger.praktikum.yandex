@@ -1,0 +1,54 @@
+.input-container {
+	width: 100%;
+	position: relative;
+	margin: 8px 0;
+}
+
+
+.form-group {
+	height: 50px;
+	position: relative;
+	width: 100%;
+	margin-top: 25px;
+
+	&>div {
+		position: relative;
+		height: 50px;
+
+		& input {
+			border-radius: 8px;
+			font-size: 18px;
+			height: 100%;
+			outline: 0;
+			padding: 16px;
+			border: 1px solid var(--color-purple);
+			width: 100%;
+		}
+
+		& span {
+			position: absolute;
+			padding: 0 3px;
+			background-color: var(--color-white);
+			color: var(--color-purple);
+			top: 16px;
+			left: 16px;
+			line-height: 18px;
+			pointer-events: none;
+			transform-origin: 0 50%;
+			transition: transform 200ms,
+		}
+
+		input:focus~span,
+		input:not(:placeholder-shown)~span {
+			transform: translateY(-25px) translateX(5px) scale(0.8);
+		}
+	}
+
+	&>.input-error {
+		color: var(--color-red);
+		position: absolute;
+		font-size: 10px;
+		top: 52px;
+		left: 7px;
+	}
+}

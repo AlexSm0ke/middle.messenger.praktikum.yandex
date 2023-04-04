@@ -1,24 +1,226 @@
-.button-container {
+.btn {
+	width: 100%;
 	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 40px;
+	padding: 0 var(--spacing-20);
+	font-family: var(--font-family-base);
+	font-size: var(--font-size-16);
+	font-weight: var(--font-weight-5);
+	color: var(--dark);
+	text-decoration: none;
+	cursor: pointer;
+	user-select: none;
+	border: 1px solid transparent;
+	border-radius: var(--spacing-6);
+	background-color: transparent;
+	transition: var(--common-transition);
+
+	&:hover,
+	&.active {
+		background-color: var(--color-gray-1);
+	}
 }
 
-.button-container__button {
-	font-weight: bold;
-	width: 100%;
-	padding: 16px;
-	line-height: 14px;
-	font-weight: bold;
-	outline: 0 none;
-	color: var(--color-primary);
-	border: solid 1px var(--color-primary);
-	border-radius: 8px;
-	background: var(--color-white);
-	cursor: pointer;
-	transition-duration: 0.3s;
-	transition-timing-function: ease;
+.btn-sm {
+	min-height: 32px;
+	padding: 0 var(--spacing-15);
+	font-size: var(--font-size-14);
+	font-weight: var(--font-weight-4);
+}
 
-	&-primary {
-		background: var(--color-primary);
-		color: var(--color-white);
+.btn-lg {
+	min-height: 48px;
+	padding: 0 var(--spacing-25);
+	font-weight: var(--font-weight-5);
+}
+
+.btn-xl {
+	min-height: 56px;
+	padding: 0 var(--spacing-30);
+	font-size: var(--font-size-20);
+	font-weight: var(--font-weight-6);
+}
+
+.btn-fluid {
+	display: block;
+	width: 100%;
+}
+
+.btn-rounded {
+	border-radius: 50px;
+}
+
+.btn-circle {
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	padding: 0;
+}
+
+.btn-square {
+	height: 40px;
+	width: 40px;
+	min-width: 40px;
+	padding: 0;
+}
+
+.btn-circle,
+.btn-square {
+	&.btn-sm {
+		height: 32px;
+		width: 32px;
+		min-height: 32px;
+		min-width: 32px;
+	}
+
+	&.btn-lg {
+		height: 48px;
+		width: 48px;
+		min-height: 48px;
+		min-width: 48px;
+	}
+
+	&.btn-xl {
+		height: 56px;
+		width: 56px;
+		min-height: 56px;
+		min-width: 56px;
+	}
+}
+
+.btn-link {
+	&.btn-primary {
+		background-color: transparent;
+		border-color: transparent;
+		color: var(--btn-primary-color);
+
+		&:hover {
+			color: var(--color-white);
+		}
+	}
+
+	&.btn-secondary {
+		background-color: transparent;
+		border-color: transparent;
+		color: var(--btn-secondary-color);
+
+		&:hover {
+			color: var(--color-white);
+		}
+	}
+
+	&.btn-light {
+		background-color: transparent;
+		border-color: transparent;
+		color: var(--btn-gray-color);
+
+		&:hover {
+			color: var(--color-gray-4);
+		}
+	}
+}
+
+.btn-primary {
+	background-color: var(--btn-primary-color);
+	border-color: var(--btn-primary-color);
+	color: var(--color-white);
+
+	& svg path {
+		fill: var(--color-white);
+	}
+
+	&:hover {
+		background-color: var(--btn-primary-color-hover);
+		border-color: var(--btn-primary-color-hover);
+	}
+}
+
+.btn-secondary {
+	background-color: var(--btn-secondary-color);
+	border-color: var(--btn-secondary-color);
+	color: var(--color-white);
+
+	& svg path {
+		fill: var(--color-white);
+	}
+
+	&:hover {
+		background-color: var(--btn-secondary-color-hover);
+		border-color: var(--btn-secondary-color-hover);
+	}
+}
+
+.btn-light {
+	background-color: var(--btn-gray-color);
+	border-color: var(--btn-gray-color);
+	color: var(--color-gray-4);
+
+	& svg path {
+		fill: var(--color-gray-4);
+	}
+
+	&:hover {
+		background-color: var(--btn-gray-color-hover);
+		border-color: var(--btn-gray-color-hover);
+	}
+}
+
+/* stylelint-disable */
+.btn-outline {
+	border-color: var(--dark);
+
+	&.btn-secondary {
+		background-color: transparent;
+		border-color: var(--btn-secondary-color);
+		color: var(--btn-secondary-color);
+
+		& svg path {
+			fill: var(--btn-secondary-color);
+		}
+
+		&:hover {
+			color: var(--color-white);
+
+			& svg path {
+				fill: var(--color-white);
+			}
+		}
+	}
+
+	&.btn-primary {
+		background-color: transparent;
+		border-color: var(--btn-primary-color);
+		color: var(--btn-primary-color);
+
+		& svg path {
+			fill: var(--btn-primary-color);
+		}
+
+		&:hover {
+			color: var(--color-white);
+
+			& svg path {
+				fill: var(--color-white);
+			}
+		}
+	}
+
+	&.btn-light {
+		background-color: transparent;
+		border-color: var(--color-gray-2);
+
+		& svg path {
+			fill: var(--color-gray-4);
+		}
+
+		&:hover {
+			color: var(--color-gray-4);
+
+			& svg path {
+				fill: var(--color-gray-4);
+			}
+		}
 	}
 }

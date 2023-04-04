@@ -6,17 +6,4 @@
 
 Запустить проект можно с помощью команды npm run start.
 
-Для переключения страниц в файле src -> index.js в слушателе событий DOMContentLoaded необходимо указать в рендере страницу отрисовки и пропсы для нее
-
-const ROUTES = {
-	'login': login,
-	'singup': singup,
-	'page404': page404,
-	'page500': page500,
-	'profile': profile,
-	'profileEdit': profileEdit,
-	'profilePassword': profilePassword,
-	'main': main,
-};
-
-render(ROUTES.profilePassword(PROPS.profilePassword));
+Валидация форм работает. 
