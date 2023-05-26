@@ -1,3 +1,7 @@
-{{#extend "routers" }}
-{{/extend}}
-{{> pageError titleError='500' textError='Мы уже фиксим'}}
+<div class="pageError__items">
+	<h1 class="pageError__title">{{ titleError }}</h1>
+	<div class="pageError__text">{{ textError }}</div>
+	<div onclick="#">
+		{{{button}}}
+	</div>
+</div>

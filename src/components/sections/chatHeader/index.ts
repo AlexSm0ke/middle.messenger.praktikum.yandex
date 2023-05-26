@@ -2,6 +2,7 @@ import Block from '../../../utils/Block';
 import Avatar from '../../ui/avatar';
 import DivBlock from '../../ui/div';
 import Dropdown from '../../ui/dropdown';
+import { IconDots } from '../../ui/icon';
 import template from './chatHeader.hbs';
 import './chatHeader.scss';
 
@@ -41,7 +42,7 @@ export class ChatHeader extends Block {
 
 		this.children.dropdown = new Dropdown({
 			dropdownButtonIsSquare: true,
-			dropdownButtonContent: 'строка',
+			dropdownButtonContent: new IconDots({ size: 'icon-m' }),
 			dropdownMenuContent: new DivBlock({
 				className: 'dropdown-menu__content',
 				data: [

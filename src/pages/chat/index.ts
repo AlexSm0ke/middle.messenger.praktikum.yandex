@@ -12,7 +12,7 @@ interface IChatPageProps {
 	footer?: Block;
 }
 
-class Chat extends Block {
+export class ChatPage extends Block {
 	constructor(props: IChatPageProps) {
 		super('div', props);
 		this.element!.classList.add('wraper');
@@ -30,7 +30,3 @@ class Chat extends Block {
 		return this.compile(template, this.props);
 	}
 }
-
-const ChatPage = new Chat({});
-
-export default ChatPage;

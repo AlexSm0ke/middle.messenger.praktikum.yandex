@@ -1,7 +1,11 @@
-import Block from "../../../utils/Block";
-import { Button } from "../../ui/button";
-import Input from "../../ui/input";
-import ChatList from "../chatList";
+import { AuthController } from '../../../core/controllers/authController';
+import Router from '../../../core/router';
+import Block from '../../../utils/Block';
+import { ROUTES } from '../../../utils/constants';
+import { Button } from '../../ui/button';
+import { IconLogout, IconNewChat, IconProfile } from '../../ui/icon';
+import Input from '../../ui/input';
+import ChatList from '../chatList';
 import template from './chatSidebar.hbs';
 import './chatSidebar.scss'
 
@@ -20,8 +24,11 @@ export class ChatSidebar extends Block {
 		const logoLink = '/';
 
 		const newChatButton = new Button({
-			data: 'новое сообщение',
-			id: "dropdownMenuButton",
+			data: new IconNewChat({
+				size: 'icon-m'
+			}),
+			id: 'dropdownMenuButton',
+			isSquare: true,
 			events: {
 				click: () => console.log('Здесь должна быть функция. Открываю модальное окно нового чата'),
 			}
@@ -43,10 +50,33 @@ export class ChatSidebar extends Block {
 		this.children.newChatButton = newChatButton;
 		this.children.inputSearch = inputSearch;
 		this.children.chatList = new ChatList({});
-		const array = ['1', '2', '3', '4'];
-		const isArray = Array.isArray(array)
-		this.props.isArray = isArray;
-		this.props.nav = ['1', '2', '3', '4'];
+		this.children.nav = [
+			new Button({
+				size: 'lg',
+				isSquare: true,
+				data: new IconProfile({
+					color: 'icon-primary',
+					size: 'icon-m'
+				}),
+				events: {
+					click: () => Router.getInstanse().go(ROUTES.profile.path)
+				},
+			}),
+			new Button({
+				size: 'lg',
+				isSquare: true,
+				data: new IconLogout({
+					color: 'icon-secondary',
+					size: 'icon-m'
+				}),
+				events: {
+					click: async (e: Event) => {
+						e.preventDefault();
+						AuthController.logout();
+					}
+				},
+			})
+		];
 
 	}
 

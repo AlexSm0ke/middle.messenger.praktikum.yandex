@@ -7,7 +7,7 @@
 		</div>
 		<div class="pageProfile__firstName">{{UserName}}</div>
 	</div>
-	<form action="">
+	<form class="profile-form" action="">
 		<div class="pageProfile__body">
 			{{#each profileFields}}
 			<div class="profile-field">
@@ -17,6 +17,7 @@
 			{{/each}}
 		</div>
 		<div class="pageProfile__footer">
+			{{user}}
 			{{#each options}}
 			<div class="profile-options__edit">
 				<a href={{href}} class="profile-options__lable">{{lable}}</a>

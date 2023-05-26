@@ -36,3 +36,8 @@
 .login-form__item {
 	margin: 8px 0;
 }
+
+.login-form__inputs {
+	display: flex;
+	flex-direction: column;
+}

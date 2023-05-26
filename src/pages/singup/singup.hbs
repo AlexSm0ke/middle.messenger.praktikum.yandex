@@ -1,11 +1,13 @@
-<form class="login-form" action="login">
-	<div class="login-form__header">Регистрация</div>
-	{{#each inputs}}
-	{{{this}}}
-	{{/each}}
-	<div class="login-form__items">
+<form class="singup-form" action="login">
+	<div class="singup-form__header">Регистрация</div>
+	<div class="singup-form__inputs">
+		{{#each inputs}}
+		{{{this}}}
+		{{/each}}
+	</div>
+	<div class="singup-form__items">
 		{{#each buttons}}
-		<div class="login-form__item">
+		<div class="singup-form__item">
 			{{{this}}}
 		</div>
 		{{/each}}

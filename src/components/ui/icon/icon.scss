@@ -1,0 +1,63 @@
+.icon {
+	display: flex;
+}
+
+.icon,
+.icon svg {
+	width: 16px;
+	height: 16px;
+}
+
+.icon-xs,
+.icon-xs svg {
+	width: 8px;
+	height: 8px;
+}
+
+.icon-m,
+.icon-m svg {
+	width: 20px;
+	height: 20px;
+}
+
+.icon-lg,
+.icon-lg svg {
+	width: 24px;
+	height: 24px;
+}
+
+.icon-xl,
+.icon-xl svg {
+	width: 32px;
+	height: 32px;
+}
+
+.icon-xxl,
+.icon-xxl svg {
+	width: 40px;
+	height: 40px;
+}
+
+.icon-white svg path {
+	fill: var(--white);
+}
+
+.icon-light svg path {
+	fill: var(--light);
+}
+
+.icon-dark svg path {
+	fill: var(--dark);
+}
+
+.icon-primary svg path {
+	fill: var(--primary);
+}
+
+.icon-secondary svg path {
+	fill: var(--secondary);
+}
+
+.icon-success svg path {
+	fill: var(--success);
+}

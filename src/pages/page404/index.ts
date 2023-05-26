@@ -2,7 +2,7 @@
 import { Button } from "../../components/ui/button";
 import Link from "../../components/ui/link";
 import Block from "../../utils/Block";
-import { routes } from "../../utils/constants";
+import { ROUTES } from "../../utils/constants";
 import template from "./page404.hbs";
 import './page404.scss';
 
@@ -12,7 +12,7 @@ interface IProfileProps {
 	data?: string
 }
 
-class ErrorPage extends Block {
+export class Page404 extends Block {
 	constructor(props: IProfileProps) {
 		super('div', props);
 		this.element!.classList.add('pageError__container');
@@ -25,7 +25,7 @@ class ErrorPage extends Block {
 		this.children.button = new Button({
 			data: this.props.data ? this.props.data : new Link({
 				data: 'Назад к чатам',
-				href: routes.chat.path,
+				href: ROUTES.chat.path,
 			}),
 			className: 'primary'
 		})
@@ -35,5 +35,3 @@ class ErrorPage extends Block {
 		return this.compile(template, this.props);
 	}
 }
-
-export default ErrorPage;

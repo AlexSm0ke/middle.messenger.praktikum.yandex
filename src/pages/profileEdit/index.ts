@@ -12,7 +12,7 @@ interface IProfileEditProps {
 
 }
 
-class ProfileEdit extends Block {
+export class ProfileEditPage extends Block {
 	constructor(props: IProfileEditProps) {
 		super('div', props);
 		this.element!.classList.add('pageProfile__container');
@@ -23,7 +23,12 @@ class ProfileEdit extends Block {
 			data: new Image({
 				src: 'images/back.phg',
 				alt: 'назад',
-			})
+			}),
+			events: {
+				click: () => {
+					window.history.back();
+				}
+			}
 		});
 
 		this.children.avatar = new Image({
@@ -102,5 +107,4 @@ class ProfileEdit extends Block {
 	}
 }
 
-const ProfileEditPage = new ProfileEdit({});
-export default ProfileEditPage;
+
