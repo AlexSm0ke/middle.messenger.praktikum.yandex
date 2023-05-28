@@ -5,6 +5,8 @@ import profile from './icons/profile.hbs';
 import arrowLeft from './icons/arrowLeft.hbs';
 import newChat from './icons/newChat.hbs';
 import dots from './icons/dots.hbs';
+import close from './icons/close.hbs';
+
 
 interface IIcon {
 	size?: 'icon-xs' | 'icon-m' | 'icon-lg' | 'icon-xl' | 'icon-xxl';
@@ -78,5 +80,16 @@ export class IconDots extends IconBlock {
 
 	render() {
 		return this.compile(dots, this.props);
+	}
+}
+
+export class IconClose extends IconBlock {
+
+	init(): void {
+		this.element!.classList.add(...this.iconClassName());
+	}
+
+	render() {
+		return this.compile(close, this.props);
 	}
 }

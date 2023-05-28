@@ -2,7 +2,7 @@ import { EventBus } from "./EventBus";
 import { nanoid } from "nanoid";
 
 // Нельзя создавать экземпляр данного класса
-class Block<P extends Record<string, any> = any> {
+class Block<P extends TProps = {}> {
 	static EVENTS = {
 		INIT: "init",
 		FLOW_CDM: "flow:component-did-mount",
@@ -11,11 +11,11 @@ class Block<P extends Record<string, any> = any> {
 	} as const;
 
 	public id = nanoid(6);
-	protected props: P;
 	public children: Record<string, Block | Block[]>;
 	private _eventBus: () => EventBus;
 	private _element: HTMLElement | null = null;
-	private _meta: { tagName: string, props: any };
+	public props: P;
+	public tagName: string = 'div';
 
 	/** JSDoc
 	 * @param {string} tagName
@@ -27,11 +27,8 @@ class Block<P extends Record<string, any> = any> {
 		const eventBus = new EventBus();
 
 		const { props, children } = this._getChildrenAndProps(propsWhithChildren);
-
-		this._meta = {
-			tagName,
-			props
-		};
+		this.tagName = tagName;
+		this.props = propsWhithChildren
 
 		this.children = children;
 		this.props = this._makePropsProxy(props);
@@ -97,7 +94,7 @@ class Block<P extends Record<string, any> = any> {
 	}
 
 	_createResources() {
-		const { tagName } = this._meta;
+		const tagName = this.tagName;
 		this._element = this._createDocumentElement(tagName);
 	}
 

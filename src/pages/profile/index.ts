@@ -25,8 +25,13 @@ interface IProfileProps {
 	options: { [key: string]: string }[];
 }
 
+// type TProfileProps = {
+// 	name: string;
+// 	email: string;
+// 	// userName: string;
+// }
 
-const getUserDataList = (state: TState) => {
+const getUserDataList = (state: TState): any => {
 	if (Object.keys(state).length !== 0 && state.user) {
 		return Object.keys(profileFields).map((key: Key) => {
 			const title = profileFields[key];
@@ -41,7 +46,6 @@ const getUserDataList = (state: TState) => {
 
 class Profile extends Block<IProfileProps> {
 	constructor(props: IProfileProps) {
-		// let state = store.getState();
 		super('div', props);
 		this.element!.classList.add('pageProfile__container');
 		AuthController.getIngo();
@@ -67,7 +71,7 @@ class Profile extends Block<IProfileProps> {
 			alt: 'назад',
 		})
 
-		this.props.userName = 'Aleksandr';
+		// this.props.userName = 'Aleksandr';
 
 
 		// this.props.profileFields = [
@@ -116,10 +120,21 @@ class Profile extends Block<IProfileProps> {
 	}
 }
 
-const withPage = connect((state) => ({
-	profileFields: getUserDataList(state),
+const withPage = connect<IProfileProps>((state: TState) => ({
+	userName: state['name'] ?? '',
+	// profileFields: getUserDataList(state),
+	profileFields: [
+		{
+			nameField: 'Почта',
+			data: state.email
+		}
+	]
 }))
 
-export const ProfilePage = withPage(Profile);
+// const withProfile = connect<TProfileProps>((state: TState) => ({ name: state['name'] ?? '', email: state['email'] ?? '' }));
+// const SProfile = withProfile(Profile as typeof Block);
+
+
+export const ProfilePage = withPage(Profile as typeof Block);
 // export const ProfilePage = Profile;
 
