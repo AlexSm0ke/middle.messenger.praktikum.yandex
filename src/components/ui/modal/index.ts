@@ -1,12 +1,12 @@
 import Block from "../../../utils/Block";
 import { Button } from "../button";
 import { IconClose } from "../icon";
-import template from '../modal/modal.hbs';
+import template from './modal.hbs';
 import './modal.scss';
 
 interface IModal {
-	className?: string;
 	id: string;
+	className?: string;
 	style?: string;
 	iconClose?: Block | string;
 	title?: string;
@@ -23,13 +23,11 @@ export const modalCloseHandler = () => {
 	}
 };
 
-const defaultModalHandler = (event: Event) => {
-	if (event.target === event.currentTarget) {
-		modalCloseHandler();
-	}
+const defaultModalHandler = () => {
+	modalCloseHandler();
 };
 
-export class Modal extends Block {
+export class Modal extends Block<IModal> {
 	constructor(props: IModal) {
 
 		super('div', props);
@@ -44,12 +42,13 @@ export class Modal extends Block {
 
 	init(): void {
 		this.element!.classList.add(...this.modalClassName());
-		// this.element!.style = 
+		this.element!.setAttribute('id', this.id);
 		this.children.modalCloseButton = new Button({
 			size: 'sm',
-			// shape: 'square',
 			id: 'modalCloseButton',
-			data: new IconClose(),
+			data: new IconClose({
+				size: 'icon-m'
+			}),
 			events: {
 				click: this.props.events?.click ?? defaultModalHandler,
 			},

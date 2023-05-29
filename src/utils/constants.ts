@@ -23,4 +23,17 @@ export const API_ENDPOINTS = {
 		user: `${API_PATH}/auth/user`,
 		logout: `${API_PATH}/auth/logout`
 	},
+	users: {
+		changeProfile: `${API_PATH}/user/profile`,
+		changeAvatar: `${API_PATH}/user/profile/avatar`,
+		changePassword: `${API_PATH}/user/password`,
+		getUserById: (id: string) => `${API_PATH}/user/${id}`,
+		searchUserByLogin: `${API_PATH}/user/search`,
+	},
+	chats: {
+		chats: `${API_PATH}/chats`,
+		chatUsersById: (id: number) => `${API_PATH}/chats/${id}/users`,
+		newMessagesCount: (id: string) => `${API_PATH}/chats/new/${id}`,
+		chatsUsers: `${API_PATH}/chats/users`,
+	},
 }

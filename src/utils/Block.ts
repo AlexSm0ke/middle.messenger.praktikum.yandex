@@ -11,11 +11,11 @@ class Block<P extends TProps = {}> {
 	} as const;
 
 	public id = nanoid(6);
+	protected props: P;
 	public children: Record<string, Block | Block[]>;
 	private _eventBus: () => EventBus;
 	private _element: HTMLElement | null = null;
-	public props: P;
-	public tagName: string = 'div';
+	private _meta: { tagName: string, props: P };
 
 	/** JSDoc
 	 * @param {string} tagName
@@ -27,8 +27,11 @@ class Block<P extends TProps = {}> {
 		const eventBus = new EventBus();
 
 		const { props, children } = this._getChildrenAndProps(propsWhithChildren);
-		this.tagName = tagName;
-		this.props = propsWhithChildren
+
+		this._meta = {
+			tagName,
+			props
+		};
 
 		this.children = children;
 		this.props = this._makePropsProxy(props);
@@ -41,6 +44,7 @@ class Block<P extends TProps = {}> {
 	}
 
 	_getChildrenAndProps(childrenProps: P): any {
+		// debugger
 		const props: Record<string, any> = {};
 		const children: Record<string, Block | []> = {};
 
@@ -55,6 +59,13 @@ class Block<P extends TProps = {}> {
 						(props[key] as Array<Block<any>>).push(obj);
 					}
 				})
+
+				if (props[key].length == 0)
+					delete props[key];
+
+				if ((children[key] as []).length == 0)
+					delete children[key];
+
 			} else if (value instanceof Block) {
 				children[key as string] = value;
 			} else {
@@ -94,7 +105,7 @@ class Block<P extends TProps = {}> {
 	}
 
 	_createResources() {
-		const tagName = this.tagName;
+		const { tagName } = this._meta;
 		this._element = this._createDocumentElement(tagName);
 	}
 

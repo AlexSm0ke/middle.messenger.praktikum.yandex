@@ -11,10 +11,13 @@ import { AuthController } from '../../core/controllers/authController';
 import Router from '../../core/router';
 
 interface ISingUpProps {
-	// title: string;
+	title: string;
+	events: {
+		submit: (e: Event) => void;
+	}
 }
 
-export class SingUpPage extends Block {
+export class SingUpPage extends Block<ISingUpProps> {
 	constructor(props: ISingUpProps) {
 		super('div', props);
 		this.element!.classList.add('container-singup');
@@ -88,18 +91,12 @@ export class SingUpPage extends Block {
 					data: 'ВОЙТИ',
 					href: ROUTES.login.path,
 				}),
-				// events: {
-				// 	click: () => {
-				// 		console.log('ckick');
-				// 	},
-				// },
 			}
 		]
 
 		this.props.title = 'Регистрация'
 		this.children.inputs = inputParametrs.map(input => new LabledInput(input));
 		this.children.buttons = buttonParametrs.map(button => new Button(button));
-
 		this.props.events = {
 			submit: (event: Event) => {
 				event.preventDefault();

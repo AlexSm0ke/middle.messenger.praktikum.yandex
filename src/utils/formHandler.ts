@@ -24,8 +24,8 @@ export const removeErrorFormNotification = (selector: string) => {
 };
 
 export const checkValidateInputs = (inputs: NodeList) =>
-	Array.from(inputs).reduce(
-		(acc, input) => acc && validateInput(input as HTMLInputElement),
+	Array.from(inputs).reduce((acc, input) =>
+		acc && validateInput(input as HTMLInputElement),
 		true
 	);
 
@@ -81,6 +81,7 @@ export const formDataSubmitHandler = async (params: {
 
 	event.preventDefault();
 	const { target } = event;
+	// debugger
 	if (target && target instanceof HTMLFormElement) {
 		if (isCheckInputs) {
 			if (!checkInputs(target as HTMLFormElement)) {

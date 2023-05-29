@@ -5,24 +5,79 @@ import { LabledInput } from "../../components/ui/LabledInput";
 import Sidebar from "../../components/ui/sidebar";
 import Block from "../../utils/Block";
 import template from "./profileEdit.hbs";
-import { validateInput } from '../../utils/validations';
+import { inputValueHandler, validateInput } from '../../utils/validations';
 import './profileEdit.scss';
+import { TState } from "../../core/store";
+import { profileFields } from "../profile";
+import { connect } from "../../core/store/connect";
+import { IconArrowLeft } from "../../components/ui/icon";
+import { AuthController } from "../../core/controllers/authController";
+import { formDataSubmitHandler } from "../../utils/formHandler";
+import { ROUTES } from "../../utils/constants";
+import Router from "../../core/router";
+import { UserController } from "../../core/controllers/userController";
+import { Form } from "../../components/ui/form";
 
 interface IProfileEditProps {
+	userName: string;
+	profileFieldsEdit: Block;
 
 }
 
-export class ProfileEditPage extends Block {
-	constructor(props: IProfileEditProps) {
-		super('div', props);
-		this.element!.classList.add('pageProfile__container');
+const getUserDataListEdit = (state: TState): Block => {
+	let inputFields: Block[] | [] = [];
+	if (Object.keys(state).length !== 0 && state.user) {
+		inputFields = Object.keys(profileFields).map((key) => {
+			const title = profileFields[key];
+			const value = state.user?.[key] ?? '';
+
+			return new LabledInput({
+				id: key,
+				name: key,
+				placeholder: title,
+				value: value,
+				events: {
+					blur: (event) => validateInput(event.target as HTMLInputElement),
+					input: (event: Event) => inputValueHandler(event.target as HTMLInputElement),
+				}
+			});
+		})
 	}
 
+	return new Form({
+		className: 'profileEdit-form',
+		data: [
+			...inputFields,
+			new Button({
+				className: 'btn-profileEdit',
+				color: 'primary',
+				type: 'submit',
+				data: 'Сохранить',
+			})
+		],
+		events: {
+			submit: (event: Event) => {
+				formDataSubmitHandler({
+					event,
+					handler: UserController.changeProfile,
+					selector: '.profileEdit-form',
+					isCheckInputs: true,
+					action: () => Router.getInstanse().go(ROUTES.profile.path),
+				});
+			},
+		}
+
+	})
+}
+
+class ProfileEdit extends Block<IProfileEditProps> {
+
 	init() {
+		this.element!.classList.add('pageProfile__container');
+		AuthController.getInfo();
 		this.children.sidebar = new Sidebar({
-			data: new Image({
-				src: 'images/back.phg',
-				alt: 'назад',
+			data: new IconArrowLeft({
+				size: "icon-xl"
 			}),
 			events: {
 				click: () => {
@@ -36,75 +91,45 @@ export class ProfileEditPage extends Block {
 			alt: 'назад',
 		})
 
-		this.props.userName = 'Aleksandr';
-
-		const inputFields = [
-			{
-				id: 'email',
-				name: 'email',
-				placeholder: 'Почта',
-				value: 'pochta@yandex.ru'
-			},
-			{
-				id: 'login',
-				name: 'login',
-				placeholder: 'Логин',
-				value: 'IvanTheBest'
-			},
-			{
-				id: 'first_name',
-				name: 'first_name',
-				placeholder: 'Имя',
-				value: 'Александр'
-			},
-			{
-				id: 'second_name',
-				name: 'second_name',
-				placeholder: 'Фамилия',
-				value: 'Птицын'
-			},
-			{
-				id: 'display_name',
-				name: 'display_name',
-				placeholder: 'Имя в чате',
-				value: 'Smoke'
-			},
-			{
-				id: 'phone',
-				name: 'phone',
-				placeholder: 'Телефон',
-				value: '+7 (909) 967 30 30'
-			},
-		]
-
-		this.children.profileFieldsEdit = inputFields.map(field => {
-			return new LabledInput({
-				id: field.id,
-				name: field.name,
-				placeholder: field.placeholder,
-				value: field.value,
-				events: {
-					blur: (event) => validateInput(event.target as HTMLInputElement)
-				}
-			});
-		})
-
 		this.children.buttonSave = new Button({
 			className: 'btn-primary',
 			type: 'submit',
 			data: 'Сохранить',
 			events: {
-				submit: (e) => {
-					e.preventDefault;
-					console.log('Данные отправлены');
-				}
+				submit: (event: Event) => {
+					formDataSubmitHandler({
+						event,
+						handler: UserController.changeProfile,
+						selector: '.profileEdit-form',
+						isCheckInputs: true,
+						action: () => Router.getInstanse().go(ROUTES.profile.path),
+					});
+				},
 			}
 		})
+
 	}
 
 	render() {
 		return this.compile(template, this.props)
 	}
 }
+
+const withPage = connect<IProfileEditProps>((state: TState) => {
+	if (state['user'] !== undefined) {
+		return {
+			UserName: state.user.display_name,
+			profileFieldsEdit: getUserDataListEdit(state)
+		}
+	} else {
+		return {
+			UserName: '',
+			profileFieldsEdit: []
+		};
+	}
+})
+
+export const ProfileEditPage = withPage(ProfileEdit);
+
 
 

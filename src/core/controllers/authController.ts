@@ -13,7 +13,7 @@ export class AuthController {
 		try {
 			const result = await authAPI.signUp(data);
 			if (result.status === 200) {
-				AuthController.getIngo();
+				AuthController.getInfo();
 				return result;
 			}
 		} catch (error) {
@@ -26,7 +26,7 @@ export class AuthController {
 		try {
 			const result = await authAPI.signIn(data);
 			if (result.status === 200) {
-				AuthController.getIngo();
+				AuthController.getInfo();
 				return result;
 			}
 		} catch (error) {
@@ -34,7 +34,7 @@ export class AuthController {
 		}
 	}
 
-	static async getIngo() {
+	static async getInfo() {
 		return authAPI.getUserInfo()
 			.then((response) => {
 				store.set('user', response.response);

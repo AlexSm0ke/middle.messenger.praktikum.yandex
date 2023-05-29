@@ -20,8 +20,8 @@ interface ILoginProps {
 	}
 }
 
-export class LoginPage extends Block {
-	constructor(props?: ILoginProps) {
+export class LoginPage extends Block<ILoginProps> {
+	constructor(props: ILoginProps) {
 		super('div', props);
 		this.element!.classList.add('container-login');
 	}

@@ -3,14 +3,14 @@ import { IconArrowLeft } from "../../components/ui/icon";
 import Image from "../../components/ui/image";
 import Sidebar from "../../components/ui/sidebar";
 import { AuthController } from "../../core/controllers/authController";
-import { store, StoreEvents, TState } from "../../core/store";
+import { TState } from "../../core/store";
 import { connect } from "../../core/store/connect";
 import Block from "../../utils/Block";
 import { ROUTES } from "../../utils/constants";
 import template from "./profile.hbs";
 import './profile.scss';
 
-const profileFields: { [key: string]: string } = {
+export const profileFields: { [key: string]: string } = {
 	email: 'Почта',
 	login: 'Логин',
 	first_name: 'Имя',
@@ -33,9 +33,9 @@ interface IProfileProps {
 
 const getUserDataList = (state: TState): any => {
 	if (Object.keys(state).length !== 0 && state.user) {
-		return Object.keys(profileFields).map((key: Key) => {
+		return Object.keys(profileFields).map((key) => {
 			const title = profileFields[key];
-			const value = state.user?.[key] ? state.user?.[key] : '-';
+			const value = state.user?.[key] ?? '';
 			return {
 				nameField: title,
 				data: value
@@ -45,19 +45,14 @@ const getUserDataList = (state: TState): any => {
 }
 
 class Profile extends Block<IProfileProps> {
-	constructor(props: IProfileProps) {
-		super('div', props);
-		this.element!.classList.add('pageProfile__container');
-		AuthController.getIngo();
-	}
-
 
 	init() {
+		this.element!.classList.add('pageProfile__container');
+		AuthController.getInfo();
 
 		this.children.sidebar = new Sidebar({
 			data: new IconArrowLeft({
-				color: "icon-secondary",
-				size: "icon-m"
+				size: "icon-xl"
 			}),
 			events: {
 				click: () => {
@@ -70,36 +65,6 @@ class Profile extends Block<IProfileProps> {
 			src: 'images/back.phg',
 			alt: 'назад',
 		})
-
-		// this.props.userName = 'Aleksandr';
-
-
-		// this.props.profileFields = [
-		// 	{
-		// 		nameField: 'Почта',
-		// 		data: 'pochta@yandex.ru'
-		// 	},
-		// 	{
-		// 		nameField: 'Логин',
-		// 		data: 'IvanTheBest'
-		// 	},
-		// 	{
-		// 		nameField: 'Имя',
-		// 		data: 'Александр'
-		// 	},
-		// 	{
-		// 		nameField: 'Фамилия',
-		// 		data: 'Птицын'
-		// 	},
-		// 	{
-		// 		nameField: 'Имя в чате',
-		// 		data: 'Smoke'
-		// 	},
-		// 	{
-		// 		nameField: 'Телефон',
-		// 		data: '+7 (909) 967 30 30'
-		// 	}
-		// ];
 
 		this.props.options = [
 			{
@@ -114,27 +79,23 @@ class Profile extends Block<IProfileProps> {
 	}
 
 	render() {
-		// console.log('thisss', this.props.user);
-
 		return this.compile(template, this.props)
 	}
 }
 
-const withPage = connect<IProfileProps>((state: TState) => ({
-	userName: state['name'] ?? '',
-	// profileFields: getUserDataList(state),
-	profileFields: [
-		{
-			nameField: 'Почта',
-			data: state.email
+const withPage = connect<IProfileProps>((state: TState) => {
+
+	if (state['user'] !== undefined) {
+		return {
+			UserName: state.user.display_name,
+			profileFields: getUserDataList(state)
 		}
-	]
-}))
+	} else {
+		return {
+			UserName: '',
+			profileFields: []
+		};
+	}
+})
 
-// const withProfile = connect<TProfileProps>((state: TState) => ({ name: state['name'] ?? '', email: state['email'] ?? '' }));
-// const SProfile = withProfile(Profile as typeof Block);
-
-
-export const ProfilePage = withPage(Profile as typeof Block);
-// export const ProfilePage = Profile;
-
+export const ProfilePage = withPage(Profile);

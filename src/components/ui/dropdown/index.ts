@@ -58,7 +58,7 @@ const dropdownHandler = (event: Event) => {
 	};
 };
 
-class Dropdown extends Block {
+class Dropdown extends Block<IDropdown> {
 	constructor(props: IDropdown) {
 		// console.log('drop', props.dropdownMenuContent);
 

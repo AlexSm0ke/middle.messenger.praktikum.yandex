@@ -14,7 +14,7 @@ interface IChatHeader {
 }
 
 export class ChatHeader extends Block {
-	constructor(props?: IChatHeader) {
+	constructor(props: IChatHeader) {
 		super('div', props);
 		this.element!.classList.add('chat-header');
 	}
@@ -23,15 +23,15 @@ export class ChatHeader extends Block {
 		this.children.userBlock = new DivBlock({
 			className: 'user-group-block',
 			data: [
-				new DivBlock({
-					className: 'avatar-group',
-					data: new Avatar({
-						data: '<img src="http://htmlbook.ru/images/logo.gif" width="450" height="450" alt="Фото">'
-					})
-				}),
+				// new DivBlock({
+				// 	className: 'avatar-group',
+				// 	data: new Avatar({
+				// 		data: 'Название чата'
+				// 	})
+				// }),
 				new DivBlock({
 					className: 'user-block__name',
-					data: 'Евлампий'
+					data: 'Название чата'
 				})
 			],
 			events: {

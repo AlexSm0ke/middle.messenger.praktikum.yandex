@@ -14,8 +14,8 @@ interface IIcon {
 	className?: string;
 }
 
-class IconBlock extends Block {
-	constructor(props?: IIcon) {
+class IconBlock extends Block<IIcon> {
+	constructor(props: IIcon) {
 		super('div', props);
 		this.iconClassName = this.iconClassName.bind(this);
 	}

@@ -15,10 +15,11 @@ export class DivBlock extends Block {
 		const isArray = Array.isArray(props.data);
 
 		super('div', { ...props, isArray });
-		this.element!.classList.add(this.props.className);
 	}
 
 	init() {
+		this.element!.classList.add(...this.props.className);
+
 		// this.children.content = this.props.data;
 		// const isArray: boolean = Array.isArray(this.props.data);
 		// this.props.isArray = isArray;

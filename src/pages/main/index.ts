@@ -10,7 +10,7 @@ interface IMain {
 }
 
 export class MainPage extends Block {
-	constructor(props?: IMain) {
+	constructor(props: IMain) {
 		super('div', props);
 		this.element!.classList.add('container')
 	}
