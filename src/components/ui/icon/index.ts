@@ -6,6 +6,9 @@ import arrowLeft from './icons/arrowLeft.hbs';
 import newChat from './icons/newChat.hbs';
 import dots from './icons/dots.hbs';
 import close from './icons/close.hbs';
+import avatar from './icons/avatar.hbs';
+import media from './icons/media.hbs';
+
 
 
 interface IIcon {
@@ -91,5 +94,28 @@ export class IconClose extends IconBlock {
 
 	render() {
 		return this.compile(close, this.props);
+	}
+}
+
+export class IconAvatar extends IconBlock {
+
+	init(): void {
+		this.element!.classList.add(...this.iconClassName());
+	}
+
+	render() {
+		return this.compile(avatar, this.props);
+	}
+}
+
+
+export class IconMedia extends IconBlock {
+
+	init(): void {
+		this.element!.classList.add(...this.iconClassName());
+	}
+
+	render() {
+		return this.compile(media, this.props);
 	}
 }

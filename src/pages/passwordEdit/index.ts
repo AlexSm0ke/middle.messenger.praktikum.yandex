@@ -12,36 +12,38 @@ import { formDataSubmitHandler } from "../../utils/formHandler";
 import { UserController } from "../../core/controllers/userController";
 import { ROUTES } from "../../utils/constants";
 import Router from "../../core/router";
+import { AuthController } from "../../core/controllers/authController";
+import { connect } from "../../core/store/connect";
+import { TState } from "../../core/store";
+import { ProfileUserAvatar } from "../../components/sections/userAvatar/userAvatar";
+import { IconArrowLeft } from "../../components/ui/icon";
 
 interface IPasswordEditProps {
-	userName: string
+	userName: string;
+	profileFieldsEdit: Block;
+	userAvatar: Block;
 }
 
-export class PasswordEditPage extends Block<IPasswordEditProps> {
-	constructor(props: IPasswordEditProps) {
-		super('div', props);
-		this.element!.classList.add('pageProfile__container');
-	}
+class PasswordEdit extends Block<IPasswordEditProps> {
 
 	init() {
+		this.element!.classList.add('pageProfile__container');
+		AuthController.getInfo();
 		this.children.sidebar = new Sidebar({
-			data: new Image({
-				src: 'images/back.phg',
-				alt: 'назад',
+			data: new IconArrowLeft({
+				size: "icon-xl"
 			}),
 			events: {
 				click: () => {
 					window.history.back();
 				}
 			}
-		})
+		});
 
 		this.children.avatar = new Image({
 			src: 'images/back.phg',
 			alt: 'назад',
 		})
-
-		this.props.userName = 'Aleksandr';
 
 		const inputFields: { [key: string]: string } = {
 			oldPassword: 'Старый пароль',
@@ -87,82 +89,26 @@ export class PasswordEditPage extends Block<IPasswordEditProps> {
 					});
 				},
 			}
-
 		})
-
-		// [
-		// 	{
-		// 		id: 'oldPassword',
-		// 		name: 'oldPassword',
-		// 		placeholder: 'Старый пароль',
-		// 	},
-		// 	{
-		// 		id: 'newPassword',
-		// 		name: 'newPassword',
-		// 		placeholder: 'Новый пароль',
-		// 	},
-		// 	{
-		// 		id: 'newPassword',
-		// 		name: 'newPassword',
-		// 		placeholder: 'Повторите новый пароль',
-		// 	}
-		// ]
-
-		// this.children.profileFieldsEdit = inputFields.map(field => {
-		// 	return new LabledInput({
-		// 		id: field.id,
-		// 		name: field.name,
-		// 		placeholder: field.placeholder,
-		// 		events: {
-		// 			blur: (event) => validateInput(event.target as HTMLInputElement)
-		// 		}
-		// 	});
-		// })
-
-		// this.children.buttonSave = new Button({
-		// 	className: 'btn-primary',
-		// 	type: 'submit',
-		// 	data: 'Сохранить',
-		// 	events: {
-		// 		submit: (e) => {
-		// 			e.preventDefault;
-		// 			console.log('Данные отправлены');
-		// 		}
-		// 	}
-		// })
-
-		// this.props.events = {
-		// 	submit: (e: Event) => {
-		// 		e.preventDefault();
-		// 		const target = e.target as HTMLInputElement;
-		// 		const inputFields = target.querySelectorAll('input');
-		// 		const data: { [key: string]: string; } = {};
-
-		// 		inputFields.forEach((current) => {
-		// 			if (current.name === 'oldPassword') {
-		// 				if (!validateInput(current)) {
-		// 					console.log('Пароль введен неверно');
-		// 				} else {
-		// 					data['password'] = current.value;
-		// 				}
-		// 			} else if (current.name === 'password') {
-		// 				if (!validateInput(current)) {
-		// 					console.log('Пароль введен неверно');
-		// 				} else {
-		// 					data[current.name] = current.value;
-		// 				}
-		// 			} else if (current.name === 'password_2') {
-		// 				if (!validateInput(current, document.querySelector("input[name=password]") as HTMLInputElement)) {
-		// 					console.log('Пароль и подтверждение пароля не совпадают');
-		// 				}
-		// 			}
-		// 		});
-		// 		console.log('data', data);
-		// 	}
-		// }
 	}
 
 	render() {
 		return this.compile(template, this.props)
 	}
 }
+
+const withPage = connect<IPasswordEditProps>((state: TState) => {
+	if (state['user'] !== undefined) {
+		return {
+			UserName: state.user.display_name,
+			userAvatar: ProfileUserAvatar(state),
+		}
+	} else {
+		return {
+			UserName: '',
+			profileFieldsEdit: []
+		};
+	}
+})
+
+export const PasswordEditPage = withPage(PasswordEdit);

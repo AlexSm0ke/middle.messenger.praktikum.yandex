@@ -81,7 +81,7 @@ export const formDataSubmitHandler = async (params: {
 
 	event.preventDefault();
 	const { target } = event;
-	// debugger
+	debugger
 	if (target && target instanceof HTMLFormElement) {
 		if (isCheckInputs) {
 			if (!checkInputs(target as HTMLFormElement)) {

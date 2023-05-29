@@ -17,11 +17,12 @@ import { ROUTES } from "../../utils/constants";
 import Router from "../../core/router";
 import { UserController } from "../../core/controllers/userController";
 import { Form } from "../../components/ui/form";
+import { ProfileUserAvatar } from "../../components/sections/userAvatar/userAvatar";
 
 interface IProfileEditProps {
 	userName: string;
 	profileFieldsEdit: Block;
-
+	userAvatar: Block;
 }
 
 const getUserDataListEdit = (state: TState): Block => {
@@ -119,7 +120,8 @@ const withPage = connect<IProfileEditProps>((state: TState) => {
 	if (state['user'] !== undefined) {
 		return {
 			UserName: state.user.display_name,
-			profileFieldsEdit: getUserDataListEdit(state)
+			profileFieldsEdit: getUserDataListEdit(state),
+			userAvatar: ProfileUserAvatar(state),
 		}
 	} else {
 		return {

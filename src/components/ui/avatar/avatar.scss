@@ -1,9 +1,19 @@
 .avatar {
-	height: 48px;
-	width: 48px;
-	background-color: var(--color-gray-1);
+	height: 34px;
+	width: 34px;
+	background-color: var(--color-gray-400);
 	border-radius: 50%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.avatar-m {
+	height: 48px;
+	width: 48px;
+}
+
+.avatar-lg {
+	height: 130px;
+	width: 130px;
 }

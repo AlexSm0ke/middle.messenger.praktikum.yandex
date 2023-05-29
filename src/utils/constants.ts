@@ -2,6 +2,9 @@ export interface IRouter {
 	[key: string]: { title: string, path: string }
 }
 
+export const API_PATH = 'https://ya-praktikum.tech/api/v2';
+export const API_RESOURCES_PATH = `${API_PATH}/resources`;
+
 export const ROUTES: IRouter = {
 	home: { title: "Главная", path: "/" },
 	login: { title: "Вход", path: "/login" },
@@ -13,8 +16,6 @@ export const ROUTES: IRouter = {
 	error_404: { title: "Ошибка 404", path: "/404" },
 	error_500: { title: "Ошибка 500", path: "/500" },
 }
-
-export const API_PATH = "https://ya-praktikum.tech/api/v2";
 
 export const API_ENDPOINTS = {
 	auth: {

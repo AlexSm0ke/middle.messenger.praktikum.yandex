@@ -58,36 +58,42 @@
 	font-weight: 600;
 }
 
-.pageProfile__photo {
-	width: 130px;
-	height: 130px;
+.pageProfileEdit__photo {
+	background-color: transparent;
+	border-radius: 50%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-radius: 50%;
-	overflow: hidden;
-	box-sizing: border-box;
-	background: var(--color-purple);
-	opacity: 0.6;
-	cursor: pointer;
+	position: relative;
+	// width: 130px;
+	// height: 130px;
+	// display: flex;
+	// align-items: center;
+	// justify-content: center;
+	// border-radius: 50%;
+	// overflow: hidden;
+	// box-sizing: border-box;
+	// background: var(--color-purple);
+	// opacity: 0.6;
+	// cursor: pointer;
 
-	& span {
-		width: 130px;
-		height: 130px;
-		border-radius: 50%;
-		position: absolute;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		opacity: 0;
-	}
+	// & span {
+	// 	width: 130px;
+	// 	height: 130px;
+	// 	border-radius: 50%;
+	// 	position: absolute;
+	// 	display: flex;
+	// 	align-items: center;
+	// 	justify-content: center;
+	// 	opacity: 0;
+	// }
 
-	&:hover span {
-		background: var(--color-black);
-		transition: 0.2s;
-		opacity: 0.99;
-		color: var(--color-white);
-	}
+	// &:hover span {
+	// 	background: var(--color-black);
+	// 	transition: 0.2s;
+	// 	opacity: 0.99;
+	// 	color: var(--color-white);
+	// }
 }
 
 .profileEdit-form {

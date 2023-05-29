@@ -3,21 +3,26 @@ import template from "./avatar.hbs";
 import "./avatar.scss";
 
 interface IAvatar {
-	// size?: "m" | "lg";
+	size?: 'm' | 'lg';
+	className?: string;
 	data?: Block | string;
 }
 
-class Avatar extends Block {
-	constructor(props?: IAvatar) {
+class Avatar extends Block<IAvatar> {
+	constructor(props: IAvatar) {
 		super('div', props);
+		this.avatarClassName = this.avatarClassName.bind(this);
+	}
+
+	avatarClassName() {
+		let className = ['avatar'];
+		if (this.props.size) className.push(`avatar-${this.props.size}`);
+		if (this.props.className) className.push(this.props.className);
+		return className;
 	}
 
 	init() {
-		this.element!.classList.add('avatar');
-
-		// console.log('this.props', this.props.data);
-
-		// this.children.content = (this.props.data ? this.props.data : );
+		this.element!.classList.add(...this.avatarClassName());
 	}
 
 	render() {
