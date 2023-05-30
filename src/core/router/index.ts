@@ -8,6 +8,7 @@ class Router {
 	private history = window.history;
 	private _currentRoute: Route | null = null;
 	private _rootQuery: string = '#app';
+	_authCheck!: () => Promise<boolean>;
 
 	constructor(rootQuery: string) {
 		if (Router.__instance) {
@@ -26,9 +27,14 @@ class Router {
 		return this._currentRoute;
 	}
 
+	authCheck(checker: () => Promise<boolean>) {
+		this._authCheck = checker;
+		return this;
+	}
+
 	// регистрирует блок по пути в роут и возвращает себя, чтобы можно было выстроить в цепочку
-	use(pathname: string, block: any) {
-		const route = new Route(pathname, block, { rootQuery: this._rootQuery });
+	use(pathname: string, block: any, protectedRoute?: boolean, redirectTo?: string) {
+		const route = new Route(pathname, block, { rootQuery: this._rootQuery, protectedRoute, redirectTo });
 
 		this.routes.push(route);
 
@@ -46,8 +52,21 @@ class Router {
 		this._onRoute(window.location.pathname);
 	}
 
-	_onRoute(pathname: string) {
+	async _onRoute(pathname: string) {
 		let route = this.getRoute(pathname);
+		const isAuth = await this._authCheck();
+
+
+		// проверяем авторизован ли пользователь
+		if (route?.props.protectedRoute && !isAuth) {
+			this.go(ROUTES.login.path);
+			return;
+		}
+
+		if (route?.props.redirectTo && isAuth) {
+			this.go(route?.props.redirectTo);
+			return;
+		}
 
 		if (!route) {
 			route = this.getRoute(ROUTES.error_404.path);

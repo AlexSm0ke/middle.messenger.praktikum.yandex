@@ -21,6 +21,13 @@ export class AuthController {
 		}
 	}
 
+	static async checkUser() {
+		return authAPI
+			.getUserInfo()
+			.then((response) => response)
+			.catch((error) => error);
+	}
+
 	static async signIn(formData: FormData) {
 		const data = formDataToObject(formData) as TSignUpData;
 		try {
@@ -56,4 +63,5 @@ export class AuthController {
 				return error;
 			});
 	}
+
 }
