@@ -9,10 +9,30 @@ import template from './chatHeader.hbs';
 import { AddUserModal } from './components/addUserModal';
 import { DeleteUserModal } from './components/deleteUserModal';
 import './chatHeader.scss';
+import { modalCloseHandler } from '../../ui/modal';
+import { ChatController } from '../../../core/controllers/chatController';
 
 interface IChatHeader {
 	state: TState;
 }
+
+const deleteChat = (activeChatId: number) => {
+	if (!activeChatId) return;
+
+	const confirmDelete = confirm('Вы уверены, что хотите удалить чат?');
+	if (confirmDelete) {
+		ChatController.deleteChat(activeChatId).then((res) => {
+			if (res) {
+				modalCloseHandler();
+				if (res.status === 200) {
+					alert('Чат удален')
+				}
+			} else {
+				alert('Произошла ошибка, попробуйте еще раз')
+			}
+		});
+	}
+};
 
 export class ChatHeader extends Block<IChatHeader> {
 	constructor(props: IChatHeader) {
@@ -95,7 +115,7 @@ export class ChatHeader extends Block<IChatHeader> {
 							}),
 						],
 						events: {
-							click: () => console.log('Скоро будет удаление')
+							click: () => deleteChat(activeChatId),
 						},
 					}),
 				]

@@ -23,7 +23,7 @@ export class ChatMessage extends Block<IChatMessage> {
 		this.element!.classList.add('chat-message');
 		if (this.props.user) this.element!.classList.add('right')
 		this.element!.setAttribute('id', this.props.id.toString());
-		this.element!.setAttribute('data-chat-id', this.props.chat_id.toString());
+		if (this.props.chat_id) this.element!.setAttribute('data-chat-id', this.props.chat_id.toString());
 		this.element!.setAttribute('data-user-id', this.props.user_id);
 	}
 

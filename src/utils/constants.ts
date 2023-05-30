@@ -9,10 +9,10 @@ export const WSS_PATH = 'wss://ya-praktikum.tech/ws/chats';
 export const ROUTES: IRouter = {
 	home: { title: "Главная", path: "/" },
 	login: { title: "Вход", path: "/login" },
-	register: { title: "Регистрация", path: "/register" },
-	chat: { title: "Мессенджер", path: "/chat" },
+	register: { title: "Регистрация", path: "/sign-up" },
+	chat: { title: "Мессенджер", path: "/messenger" },
 	profile: { title: "Личный кабинет", path: "/profile" },
-	profileEdit: { title: "Редактирование профиля", path: "/profile-edit" },
+	profileEdit: { title: "Редактирование профиля", path: "/settings" },
 	passwordEdit: { title: "Изменение пароля", path: "/password-edit" },
 	error_404: { title: "Ошибка 404", path: "/404" },
 	error_500: { title: "Ошибка 500", path: "/500" },
