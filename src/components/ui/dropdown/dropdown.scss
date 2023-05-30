@@ -2,7 +2,7 @@
 	position: relative;
 	display: inline-block;
 
-	&.up .dropdown-menu {
+	&.dropdown-menu .up {
 		top: auto;
 		right: auto;
 		left: 0;
