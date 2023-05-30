@@ -5,149 +5,104 @@ import { Button } from "../../ui/button";
 import ChatCard from "../chatCard";
 import Avatar from "../../ui/avatar";
 import Image from "../../ui/image";
-import InfoLable from "../../ui/infoLable";
-
+import { TState } from "../../../core/store";
+import { TActiveChat, TChatItem } from "../../../types";
+import { API_RESOURCES_PATH } from "../../../utils/constants";
+import { ChatController } from "../../../core/controllers/chatController";
+import DivBlock from "../../ui/div";
+import { createNewChat } from "../chatSidebar";
+import { Label2 } from "../../ui/label";
+import { dateConvert } from "../../../utils/dateConvert";
 import './chatList.scss'
 
 interface IChatList {
-	id: string;
-	avatar: string;
-	title: string;
-	messages: {
-		message: string;
-		time: string
-	}[];
-	active: boolean;
-	unread_count: string;
+	state: TState;
 }
 
+const getChatList = (state: TState) => {
 
-interface IChatListProps {
-	data?: Block[] | Block;
-}
+	if (state.chats && (state.chats as IChatList[]).length !== 0) {
+		const chats = state.chats as TChatItem[];
+		const activeChat = state.activeChat as TActiveChat;
+		let activeChatId: number;
+		if (activeChat) {
+			activeChatId = activeChat.id;
+		}
+		return chats.map((item) => {
+			const chatAvatar =
+				item.avatar
+					? new Avatar({
+						data: new Image({
+							src: API_RESOURCES_PATH + item.avatar,
+						}),
+					})
+					: new Avatar({});
 
-class ChatList extends Block {
-	constructor(props?: IChatListProps) {
+			const chatLabel =
+				item.unread_count
+					? new Label2({
+						color: 'label-primary',
+						isCircle: true,
+						data: `${item.unread_count}`,
+					})
+					: null;
+
+			return new ChatCard({
+				chatId: item.id,
+				avatar: chatAvatar,
+				title: item.title,
+				message:
+					item.last_message && item.last_message.content
+						? item.last_message.content
+						: 'Нет сообщений',
+				datetime:
+					item.last_message && item.last_message.time
+						? dateConvert(item.last_message.time)
+						: '',
+				info: chatLabel,
+				isActive: !!(activeChatId && activeChatId === item.id),
+				events: {
+					click: (event: Event) => {
+						const target = event.currentTarget;
+						if (target && target instanceof HTMLElement) {
+							const targetId = target.getAttribute('data-chat-id');
+							if (targetId && activeChatId !== parseInt(targetId)) {
+								ChatController.getChatById(parseInt(targetId));
+							}
+						}
+					},
+				},
+			});
+		});
+	}
+
+	return new DivBlock({
+		className: 'chat-list__empty-message',
+		data: [
+			new Text({
+				className: 'text-extra-dark',
+				data: 'У вас нет ни одного чата',
+			}),
+			new Button({
+				color: 'light',
+				size: 'sm',
+				data: 'Создать чат',
+				events: {
+					click: createNewChat,
+				},
+			}),
+		],
+	});
+};
+
+class ChatList extends Block<IChatList>{
+	constructor(props: IChatList) {
 		super('div', props);
 	}
 
 	init() {
-		// const chatList = [];
-		const chatList = [
-			{
-				id: '1',
-				avatar: '',
-				title: 'Олег',
-				messages: [
-					{
-						message: 'Дарова',
-						time: '9:24'
-					}
-					, {
-						message: 'Ну как ты?',
-						time: '9:25'
-					}
-				],
-				active: false,
-				unread_count: '2',
-			},
-			{
-				id: '2',
-				avatar: 'images/AvatarEmpty.png',
-				title: 'Курсы IT',
-				messages: [
-					{
-						message: 'Сегодня в выпуске...',
-						time: '10:54'
-					}
-					, {
-						message: 'Сегодня в выпуске...',
-						time: '12:25'
-					}
-				],
-				active: false,
-				unread_count: '99',
-			},
-		];
-
-
-		if (chatList.length !== 0) {
-			this.element!.classList.add('chat-list');
-
-			const getChatList = (chatList: IChatList[]) => {
-				return chatList.map((chat) => {
-					const chatAvatar =
-						// chat.avatar ?
-						// 	new Avatar({
-						// 		data: new Image({
-						// 			src: chat.avatar,
-						// 			alt: 'Аватар'
-						// 		})
-						// 	}) :
-						new Avatar({});
-
-					const chatInfoLable = chat.unread_count ?
-						new InfoLable({
-							count: `${chat.unread_count}`
-						}) : null;
-
-					return new ChatCard({
-						chatId: chat.id,
-						avatar: chatAvatar,
-						title: chat.title,
-						message: chat.messages ? chat.messages[chat.messages.length - 1].message : 'Нет сообщений',
-						datetime: chat.messages ? chat.messages[chat.messages.length - 1].time : '',
-						info: chatInfoLable,
-						isActive: chat.active,
-						events: {
-							click: (e: Event) => {
-								// const target = e.currentTarget;
-								// if (target && target instanceof HTMLElement) {
-								// 	const activeCard = document.querySelector(".chat-card.active");
-								// 	if (activeCard) {
-								// 		activeCard.classList.remove("active");
-								// 	}
-								// 	target.classList.add("active");
-								// 	const targetId = target.getAttribute("data-chat-id");
-								// 	if (targetId) {
-
-								// 	}
-								// }
-							}
-						}
-					})
-				})
-			}
-
-			this.children.data = getChatList(chatList);
-			// this.children.data = [
-			// 	// new Avatar({
-			// 	// 	data: new Image({
-			// 	// 		src: 'images/AvatarEmpty.png',
-			// 	// 		alt: 'Аватар'
-			// 	// 	})
-			// 	// }),
-			// 	new Avatar({}),
-			// 	new Avatar({}),
-			// ];
-		} else {
-			this.element!.classList.add('chat-list__empty');
-			this.children.data = [
-				new Text({
-					className: "text-silver",
-					data: "У вас нет ни одного чата"
-				}),
-				new Button({
-					color: "light",
-					size: "sm",
-					data: "Создать чат",
-					events: {
-						click: () => console.log('Создать новый чат')
-					}
-				})
-			]
-
-		}
+		this.element!.classList.add('chat-list')
+		this.children.data = getChatList(this.props.state);
 	}
 
 	render() {

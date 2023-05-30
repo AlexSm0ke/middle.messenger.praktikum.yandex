@@ -50,12 +50,8 @@ export class Button extends Block<ButtonProps> {
 
 	init() {
 		this.element!.classList.add(...this.buttonClassName());
-
+		if (this.props.id) this.element!.setAttribute('id', this.props.id)
 		this.element?.setAttribute('type', this.props.type ? this.props.type : 'button')
-
-		// this.children.content = this.props.content;
-
-
 	}
 
 	render() {

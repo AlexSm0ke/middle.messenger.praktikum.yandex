@@ -3,7 +3,7 @@ import template from "./chatCard.hbs";
 import "./chatCard.scss";
 
 interface IChardCard {
-	chatId: string;
+	chatId: number;
 	avatar: Block;
 	title: string;
 	message: string;
@@ -15,14 +15,14 @@ interface IChardCard {
 	}
 }
 
-class ChatCard extends Block {
+class ChatCard extends Block<IChardCard>{
 	constructor(props: IChardCard) {
 		super('div', props);
-		this.element!.classList.add('chat-card');
 	}
 
-	inin() {
-		this.element!.setAttribute('data-chat-id', this.props.chatId);
+	init() {
+		this.element!.classList.add('chat-card');
+		this.element!.setAttribute('data-chat-id', this.props.chatId.toString());
 		if (this.props.isActive) this.element!.classList.add('active');
 	}
 

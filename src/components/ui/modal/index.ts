@@ -19,7 +19,7 @@ interface IModal {
 export const modalCloseHandler = () => {
 	const modalRoot = document.getElementById('modal-root');
 	if (modalRoot) {
-		modalRoot.innerHTML = '';
+		modalRoot.textContent = '';
 	}
 };
 

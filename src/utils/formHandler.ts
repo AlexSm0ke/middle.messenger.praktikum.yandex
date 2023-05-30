@@ -52,7 +52,7 @@ export const textNotification = (
 				textNode.classList.add(`text-notification-${style}`);
 				node.after(textNode);
 			}
-			textNode.innerHTML = message;
+			textNode.textContent = message;
 		}
 	}
 };
@@ -81,7 +81,6 @@ export const formDataSubmitHandler = async (params: {
 
 	event.preventDefault();
 	const { target } = event;
-	debugger
 	if (target && target instanceof HTMLFormElement) {
 		if (isCheckInputs) {
 			if (!checkInputs(target as HTMLFormElement)) {

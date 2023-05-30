@@ -63,4 +63,9 @@ export class ChatAPI extends HTTPTransport {
             headers: { 'Content-Type': this.contentType },
         });
     }
+
+    // Получение списка токенов пользователей чата
+    public getChatToken(id: number): Promise<XMLHttpRequest> {
+        return this.post(API_ENDPOINTS.chats.getChatUsers(id));
+    }
 }

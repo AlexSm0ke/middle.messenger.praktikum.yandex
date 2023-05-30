@@ -1,7 +1,9 @@
-import { TChatTitleData } from "../../types";
+import { IChatUser, TChatTitleData } from "../../types";
 import { formDataToObject } from "../../utils/formDataToObject";
 import { ChatAPI, TChatsQueryParams } from "../api/chatApi";
 import { store } from "../store";
+import { UserController } from "./userController";
+import { WebSocketController } from "./webSocketController";
 
 const chatAPI = new ChatAPI();
 
@@ -61,7 +63,6 @@ export class ChatController {
         return UserController.getUsersByLogin(login)
             .then((response) => response)
             .catch((error) => {
-                errorHandler(error);
                 return error;
             });
     }
@@ -127,6 +128,15 @@ export class ChatController {
                 });
                 return response;
             })
+            .catch((error) => {
+                return error;
+            });
+    }
+
+    static async getToken(chatId: number) {
+        return chatAPI
+            .getChatToken(chatId)
+            .then((response) => response)
             .catch((error) => {
                 return error;
             });

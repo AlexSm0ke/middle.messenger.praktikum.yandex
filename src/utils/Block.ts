@@ -44,7 +44,6 @@ class Block<P extends TProps = {}> {
 	}
 
 	_getChildrenAndProps(childrenProps: P): any {
-		// debugger
 		const props: Record<string, any> = {};
 		const children: Record<string, Block | []> = {};
 

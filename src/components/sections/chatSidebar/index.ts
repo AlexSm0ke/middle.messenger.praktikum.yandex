@@ -1,6 +1,7 @@
 import { AuthController } from '../../../core/controllers/authController';
 import { ChatController } from '../../../core/controllers/chatController';
 import Router from '../../../core/router';
+import { TState } from '../../../core/store';
 import Block from '../../../utils/Block';
 import { ROUTES } from '../../../utils/constants';
 import { formDataSubmitHandler } from '../../../utils/formHandler';
@@ -17,6 +18,8 @@ import './chatSidebar.scss'
 
 interface ISidebarProps {
 	logoLink?: string;
+	state: TState;
+
 }
 
 export const createNewChat = () => {
@@ -35,6 +38,7 @@ export const createNewChat = () => {
 				new Button({
 					color: 'primary',
 					isFluid: true,
+					type: 'submit',
 					size: 'lg',
 					data: 'Создать',
 				})
@@ -51,7 +55,6 @@ export const createNewChat = () => {
 					});
 				},
 			}
-
 		}),
 
 	});
@@ -78,7 +81,6 @@ export class ChatSidebar extends Block<ISidebarProps> {
 			events: {
 				click: createNewChat,
 			}
-
 		});
 
 		const inputSearch = new Input({
@@ -88,14 +90,10 @@ export class ChatSidebar extends Block<ISidebarProps> {
 			placeholder: 'Поиск',
 		})
 
-
-
-		// const chatList = new ChatlistSection({})
-
 		this.props.logoLink = logoLink;
 		this.children.newChatButton = newChatButton;
 		this.children.inputSearch = inputSearch;
-		this.children.chatList = new ChatList({});
+		this.children.chatList = new ChatList({ state: this.props.state, });
 		this.children.nav = [
 			new Button({
 				size: 'lg',

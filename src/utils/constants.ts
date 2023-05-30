@@ -4,6 +4,7 @@ export interface IRouter {
 
 export const API_PATH = 'https://ya-praktikum.tech/api/v2';
 export const API_RESOURCES_PATH = `${API_PATH}/resources`;
+export const WSS_PATH = 'wss://ya-praktikum.tech/ws/chats';
 
 export const ROUTES: IRouter = {
 	home: { title: "Главная", path: "/" },
@@ -36,5 +37,6 @@ export const API_ENDPOINTS = {
 		chatUsersById: (id: number) => `${API_PATH}/chats/${id}/users`,
 		newMessagesCount: (id: string) => `${API_PATH}/chats/new/${id}`,
 		chatsUsers: `${API_PATH}/chats/users`,
+		getChatUsers: (id: number) => `${API_PATH}/chats/token/${id}`,
 	},
 }

@@ -8,6 +8,11 @@ import dots from './icons/dots.hbs';
 import close from './icons/close.hbs';
 import avatar from './icons/avatar.hbs';
 import media from './icons/media.hbs';
+import add from './icons/add.hbs';
+import del from './icons/del.hbs';
+import trash from './icons/trash.hbs';
+import arrowRight from './icons/arrowRight.hbs';
+
 
 
 
@@ -117,5 +122,49 @@ export class IconMedia extends IconBlock {
 
 	render() {
 		return this.compile(media, this.props);
+	}
+}
+
+export class IconAdd extends IconBlock {
+
+	init(): void {
+		this.element!.classList.add(...this.iconClassName());
+	}
+
+	render() {
+		return this.compile(add, this.props);
+	}
+}
+
+export class IconDelete extends IconBlock {
+
+	init(): void {
+		this.element!.classList.add(...this.iconClassName());
+	}
+
+	render() {
+		return this.compile(del, this.props);
+	}
+}
+
+export class IconTrash extends IconBlock {
+
+	init(): void {
+		this.element!.classList.add(...this.iconClassName());
+	}
+
+	render() {
+		return this.compile(trash, this.props);
+	}
+}
+
+export class IconArrowRight extends IconBlock {
+
+	init(): void {
+		this.element!.classList.add(...this.iconClassName());
+	}
+
+	render() {
+		return this.compile(arrowRight, this.props);
 	}
 }

@@ -2,22 +2,20 @@
 	& .list-item {
 		display: flex;
 		align-items: center;
-		height: 32px;
+		min-height: 32px;
 	}
 
 	&.list-flush {
 		& .list-item {
-			border-bottom: var(--light);
-			border-bottom-width: 1px;
-			border-bottom-style: solid;
+			border-bottom: 1px solid var(--light);
 		}
 
 		& .list-item:last-child {
-			border-bottom: transparent;
+			border-bottom-color: transparent;
 		}
 	}
 
-	&.list-full {
+	&.list-fluid {
 		width: 100%;
 	}
 }
