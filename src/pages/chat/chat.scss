@@ -10,6 +10,7 @@
 .chat {
 	width: calc(100% - 320px);
 	padding: 0;
+	border: 1px solid var(--light);
 	min-height: 100vh;
 	transition: all 0.3s;
 	position: absolute;

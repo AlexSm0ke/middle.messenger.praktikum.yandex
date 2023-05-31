@@ -6,9 +6,7 @@
     height: 100vh;
     z-index: 999;
     background: var(--white);
-    border-right: var(--light);
-    border-right-width: 1px;
-    border-right-style: solid;
+    border: 1px solid var(--light);
     transition: all 0.3s;
 }
 

@@ -12,8 +12,7 @@ import add from './icons/add.hbs';
 import del from './icons/del.hbs';
 import trash from './icons/trash.hbs';
 import arrowRight from './icons/arrowRight.hbs';
-
-
+import addFiles from './icons/addFiles.hbs';
 
 
 interface IIcon {
@@ -166,5 +165,16 @@ export class IconArrowRight extends IconBlock {
 
 	render() {
 		return this.compile(arrowRight, this.props);
+	}
+}
+
+export class IconAddFiles extends IconBlock {
+
+	init(): void {
+		this.element!.classList.add(...this.iconClassName());
+	}
+
+	render() {
+		return this.compile(addFiles, this.props);
 	}
 }
