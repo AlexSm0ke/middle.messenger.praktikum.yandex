@@ -1,3 +1,15 @@
+.dropdown {
+	position: relative;
+	display: inline-block;
+
+	&.dropdown-menu .up {
+		top: auto;
+		right: auto;
+		left: 0;
+		bottom: 150%;
+	}
+}
+
 .dropdown-menu {
 	min-width: 240px;
 	padding: var(--spacing-15);
@@ -8,20 +20,8 @@
 	background-color: var(--white);
 	border-radius: var(--spacing-10);
 	overflow: auto;
-	box-shadow: var(--box-shadow-dropdown-menu);
+	box-shadow: 0 0 6 #00000024;
 	z-index: 1;
-}
-
-.dropdown {
-	position: relative;
-	display: inline-block;
-
-	&.up .dropdown-menu {
-		top: auto;
-		right: auto;
-		left: 0;
-		bottom: 150%;
-	}
 }
 
 .dropdown-menu .dropdown-item {
@@ -30,7 +30,6 @@
 	justify-content: flex-start;
 	font-size: var(--font-size-14);
 	gap: 10px;
-	color: var(--color-gray-4);
 	transition: var(--common-transition);
 
 	&+.dropdown-item {

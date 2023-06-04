@@ -1,18 +1,10 @@
 {{{sidebar}}}
 <div class="pageProfile__items">
 	<div class="pageProfile__avatar">
-		<div class="pageProfile__photo">
-			{{{avatar}}}
-			<span>поменять<br>аватар</span>
+		<div class="pageProfileEdit__photo">
+			{{{userAvatar}}}
 		</div>
-		<div class="pageProfile__firstName">{{UserName}}</div>
+		<div class="pageProfile__firstName">{{{UserName}}}</div>
 	</div>
-	<form action="">
-		{{#each profileFieldsEdit}}
-		{{{this}}}
-		{{/each}}
-		<div class="pageProfile__footer">
-			{{{buttonSave}}}
-		</div>
-	</form>
+	{{{profileFieldsEdit}}}
 </div>

@@ -8,9 +8,13 @@ interface IProps {
 	className?: string;
 	type?: string;
 	placeholder?: string;
+	value?: string;
+	accept?: string;
+	attr?: string[];
 	events?: {
 		blur?: (e: Event) => void;
 		focus?: (e: Event) => void;
+		change?: (e: Event) => void;
 	}
 }
 
@@ -29,8 +33,12 @@ class Input extends Block<IProps> {
 		);
 		this.element!.setAttribute(
 			'placeholder',
-			this.props.placeholder ? this.props.placeholder : ' '
+			this.props.placeholder ?? ' '
 		);
+		this.element!.setAttribute('value', this.props.value ?? '')
+		if (Array.isArray(this.props.attr)) {
+			this.element!.setAttribute(this.props.attr![0] ?? '', this.props.attr![1] ?? '')
+		}
 	}
 
 	render() {

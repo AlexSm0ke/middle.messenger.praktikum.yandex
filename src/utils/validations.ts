@@ -55,7 +55,6 @@ export default ValidationForm;
 
 export const validateInput = (firstElement: HTMLInputElement, secondElement?: HTMLInputElement): boolean => {
 	const validation = new ValidationForm;
-
 	if (firstElement.name === 'login') {
 		if (!validation.checkLogin(firstElement.value)) {
 			validation.showError(firstElement, '.form-group');
@@ -72,7 +71,15 @@ export const validateInput = (firstElement: HTMLInputElement, secondElement?: HT
 			validation.hideError(firstElement, '.form-group');
 			return true;
 		}
-	} else if (firstElement.name === 'password_2' && secondElement) {
+	} else if (firstElement.name === 'oldPassword') {
+		if (!validation.checkPassword(firstElement.value)) {
+			validation.showError(firstElement, '.form-group', "Неверный формат, либо менее 8 символов");
+			return false;
+		} else {
+			validation.hideError(firstElement, '.form-group');
+			return true;
+		}
+	} else if (firstElement.name === 'returnNewPass' && secondElement) {
 		if (!validation.checkPassword(firstElement.value) || !validation.checkPasswordConfirm(firstElement.value, secondElement.value)) {
 			validation.showError(firstElement, '.form-group', "Неверный формат, либо пароли не совпадают");
 			return false;
@@ -80,7 +87,15 @@ export const validateInput = (firstElement: HTMLInputElement, secondElement?: HT
 			validation.hideError(firstElement, '.form-group');
 			return true;
 		}
-	} else if (firstElement.name === 'new_password') {
+	} else if (firstElement.name === 'returnNewPass') {
+		if (!validation.checkPassword(firstElement.value)) {
+			validation.showError(firstElement, '.form-group', "Неверный формат, либо менее 8 символов");
+			return false;
+		} else {
+			validation.hideError(firstElement, '.form-group');
+			return true;
+		}
+	} else if (firstElement.name === 'newPassword') {
 		if (!validation.checkPassword(firstElement.value)) {
 			validation.showError(firstElement, '.form-group', "Неверный формат, либо менее 8 символов");
 			return false;
@@ -120,7 +135,7 @@ export const validateInput = (firstElement: HTMLInputElement, secondElement?: HT
 			validation.hideError(firstElement, '.form-group');
 			return true;
 		}
-	} else if (firstElement.name === 'chat_name') {
+	} else if (firstElement.name === 'display_name') {
 		if (!validation.checkName(firstElement.value)) {
 			validation.showError(firstElement, '.form-group', "Неверный формат");
 			return false;
@@ -137,6 +152,11 @@ export const validateInput = (firstElement: HTMLInputElement, secondElement?: HT
 	} else {
 		return false;
 	}
-
 }
 
+export const inputValueHandler = (element: HTMLInputElement) => {
+	if (element) {
+		element.setAttribute('value', element.value);
+		validateInput(element as HTMLInputElement);
+	}
+};

@@ -1,13 +1,13 @@
 {{{sidebar}}}
 <div class="pageProfile__items">
 	<div class="pageProfile__avatar">
-		<div class="pageProfile__photo">
-			{{{avatar}}}
-			<span>поменять<br>аватар</span>
+		<div class="user-avatar">
+			{{{userAvatar}}}
+			{{{avatarOverlay}}}
 		</div>
 		<div class="pageProfile__firstName">{{UserName}}</div>
 	</div>
-	<form action="">
+	<form class="profile-form" action="">
 		<div class="pageProfile__body">
 			{{#each profileFields}}
 			<div class="profile-field">

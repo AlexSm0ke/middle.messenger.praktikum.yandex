@@ -1,4 +1,4 @@
-import { routes } from "./utils/constants";
+import { ROUTES } from "./utils/constants";
 import {
 	MainPage,
 	LoginPage,
@@ -6,39 +6,32 @@ import {
 	ChatPage,
 	ProfilePage,
 	ProfileEditPage,
-	// PasswordEditPage,
-	ErrorPage,
+	PasswordEditPage,
+	Page404,
 	Page500
 } from './pages';
 
 import "./styles/globals.scss";
-import Block from './utils/Block';
+import Router from "./core/router";
+import { AuthController } from "./core/controllers/authController";
 
+const authChecker = () => AuthController.checkUser().then((res) => res.status === 200);
+const AppRouter = new Router("#app");
+window.router = AppRouter;
 
-const currentPath: string = window.location.pathname;
+const protectedRoute = true;
+const redirectTo = ROUTES.chat.path;
 
-const pages: { [key: string]: Block } = {
-	[routes.home.path]: MainPage,
-	[routes.login.path]: new LoginPage({}),
-	[routes.register.path]: new SingUpPage({}),
-	[routes.chat.path]: ChatPage,
-	[routes.profile.path]: ProfilePage,
-	[routes.profileEdit.path]: ProfileEditPage,
-	// [routes.passwordEdit.path]: PasswordEditPage,
-	[routes.error_404.path]: new ErrorPage({}),
-	[routes.error_500.path]: Page500
-}
-
-const renderDOM = (elem: string, block: Block) => {
-	const root = document.querySelector(elem);
-
-	root!.innerHTML = '';
-	root!.appendChild(block.getContent() as HTMLElement);
-	block.dispatchComponentDidMount();
-};
-
-Object.entries(pages).forEach(([url, page]) => {
-	if (currentPath === url) {
-		renderDOM('#app', page);
-	}
+document.addEventListener("DOMContentLoaded", () => {
+	AppRouter.authCheck(authChecker)
+		.use(ROUTES.home.path, MainPage)
+		.use(ROUTES.login.path, LoginPage, !protectedRoute, redirectTo)
+		.use(ROUTES.register.path, SingUpPage, !protectedRoute, redirectTo)
+		.use(ROUTES.chat.path, ChatPage, protectedRoute)
+		.use(ROUTES.profile.path, ProfilePage, protectedRoute)
+		.use(ROUTES.profileEdit.path, ProfileEditPage, protectedRoute)
+		.use(ROUTES.passwordEdit.path, PasswordEditPage, protectedRoute)
+		.use(ROUTES.error_404.path, Page404)
+		.use(ROUTES.error_500.path, Page500)
+		.start()
 });

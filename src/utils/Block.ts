@@ -1,9 +1,8 @@
 import { EventBus } from "./EventBus";
 import { nanoid } from "nanoid";
-import { TemplateDelegate } from "handlebars";
 
 // Нельзя создавать экземпляр данного класса
-class Block<P extends Record<string, any> = any> {
+class Block<P extends TProps = {}> {
 	static EVENTS = {
 		INIT: "init",
 		FLOW_CDM: "flow:component-did-mount",
@@ -16,7 +15,7 @@ class Block<P extends Record<string, any> = any> {
 	public children: Record<string, Block | Block[]>;
 	private _eventBus: () => EventBus;
 	private _element: HTMLElement | null = null;
-	private _meta: { tagName: string, props: any };
+	private _meta: { tagName: string, props: P };
 
 	/** JSDoc
 	 * @param {string} tagName
@@ -59,6 +58,13 @@ class Block<P extends Record<string, any> = any> {
 						(props[key] as Array<Block<any>>).push(obj);
 					}
 				})
+
+				if (props[key].length == 0)
+					delete props[key];
+
+				if ((children[key] as []).length == 0)
+					delete children[key];
+
 			} else if (value instanceof Block) {
 				children[key as string] = value;
 			} else {

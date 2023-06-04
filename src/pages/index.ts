@@ -1,16 +1,12 @@
-import MainPage from "./main";
-import LoginPage from "./login";
-import SingUpPage from "./singup";
-import ChatPage from "./chat";
-import ProfilePage from "./profile";
-import ProfileEditPage from "./profileEdit";
-// import PasswordEditPage from "./passwordEdit";
-import ErrorPage from "./page404";
-
-const Page500 = new ErrorPage({
-	titleError: '500',
-	textError: 'Мы уже фиксим'
-})
+import { MainPage } from "./main";
+import { LoginPage } from "./login";
+import { SingUpPage } from "./singup";
+import { ChatPage } from "./chat";
+import { ProfilePage } from "./profile";
+import { ProfileEditPage } from "./profileEdit";
+import { PasswordEditPage } from "./passwordEdit";
+import { Page404 } from "./page404";
+import { Page500 } from "./page500";
 
 export {
 	MainPage,
@@ -19,7 +15,7 @@ export {
 	ChatPage,
 	ProfilePage,
 	ProfileEditPage,
-	// PasswordEditPage,
-	ErrorPage,
+	PasswordEditPage,
+	Page404,
 	Page500
 };

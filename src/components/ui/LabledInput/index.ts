@@ -8,9 +8,11 @@ interface IProps {
 	name: string;
 	placeholder: string;
 	value?: string;
+	type?: 'input' | 'password';
 	events?: {
 		blur?: (e: Event) => void;
 		focus?: (e: Event) => void;
+		input?: (e: Event) => void;
 	}
 }
 
@@ -24,6 +26,8 @@ export class LabledInput extends Block<IProps> {
 		this.children.input = new Input({
 			id,
 			name,
+			type: this.props.type ?? '',
+			value: this.props.value ?? '',
 			events: {
 				blur: this.props.events?.blur,
 				focus: this.props.events?.focus,
@@ -31,9 +35,6 @@ export class LabledInput extends Block<IProps> {
 		});
 
 		this.element!.classList.add('form-group')
-		// this.element!.setAttribute('for', this.props.id);
-
-		this.element!.setAttribute('value', this.props.value ? this.props.value : '');
 	}
 
 	render() {

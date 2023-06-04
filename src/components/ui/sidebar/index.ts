@@ -6,6 +6,9 @@ import './sidebar.scss'
 
 interface ISidebarProps {
 	data: Block | URL;
+	events: {
+		click: (e: Event) => void;
+	}
 }
 
 class Sidebar extends Block {
@@ -15,6 +18,7 @@ class Sidebar extends Block {
 	}
 
 	init() {
+
 	}
 
 	render() {

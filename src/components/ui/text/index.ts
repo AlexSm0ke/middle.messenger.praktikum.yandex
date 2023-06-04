@@ -7,8 +7,8 @@ interface IText {
 	data?: Block | string;
 };
 
-class Text extends Block {
-	constructor(props?: IText) {
+class Text extends Block<IText> {
+	constructor(props: IText) {
 		super('span', props);
 
 	}

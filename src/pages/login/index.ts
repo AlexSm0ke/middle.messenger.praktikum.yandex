@@ -5,7 +5,10 @@ import { Button } from '../../components/ui/button';
 import { validateInput } from '../../utils/validations';
 import './login.scss'
 import Link from '../../components/ui/link';
-import { routes } from '../../utils/constants';
+import { ROUTES } from '../../utils/constants';
+import { formDataSubmitHandler } from '../../utils/formHandler';
+import { AuthController } from '../../core/controllers/authController';
+import Router from '../../core/router';
 
 interface ILoginProps {
 	inputLogin?: Block;
@@ -17,8 +20,8 @@ interface ILoginProps {
 	}
 }
 
-class LoginPage extends Block {
-	constructor(props?: ILoginProps) {
+export class LoginPage extends Block<ILoginProps> {
+	constructor(props: ILoginProps) {
 		super('div', props);
 		this.element!.classList.add('container-login');
 	}
@@ -52,7 +55,7 @@ class LoginPage extends Block {
 		this.children.buttonSingUp = new Button({
 			data: new Link({
 				data: 'ЗАРЕГИСТРИРОВАТЬСЯ',
-				href: routes.register.path,
+				href: ROUTES.register.path,
 			}),
 			events: {
 				click: () => {
@@ -62,31 +65,14 @@ class LoginPage extends Block {
 		})
 
 		this.props.events = {
-			submit: (e: Event) => {
-				e.preventDefault();
-				const target = e.target as HTMLInputElement;
-				const inputFields = target.querySelectorAll('input');
-				const data: { [key: string]: string; } = {};
-
-				inputFields.forEach((current) => {
-					if (current.name === 'login') {
-						if (!validateInput(current)) {
-							console.log('Логин введен неверно');
-						} else {
-							data[current.name] = current.value;
-						}
-					} else if (current.name === 'password') {
-						if (!validateInput(current)) {
-							console.log('Пароль введен неверно');
-						} else {
-							data[current.name] = current.value;
-						}
-					} else {
-						console.log('current', current);
-						data[current.name] = current.value;
-					}
+			submit: (event: Event) => {
+				formDataSubmitHandler({
+					event: event,
+					handler: AuthController.signIn,
+					selector: ".login-form__inputs",
+					isCheckInputs: true,
+					action: () => Router.getInstanse().go(ROUTES.chat.path)
 				});
-				console.log('data', data);
 			}
 		}
 	}
@@ -96,4 +82,3 @@ class LoginPage extends Block {
 	}
 }
 
-export default LoginPage;

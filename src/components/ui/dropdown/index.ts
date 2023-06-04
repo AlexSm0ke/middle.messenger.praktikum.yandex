@@ -58,15 +58,21 @@ const dropdownHandler = (event: Event) => {
 	};
 };
 
-class Dropdown extends Block {
+class Dropdown extends Block<IDropdown> {
 	constructor(props: IDropdown) {
-		// console.log('drop', props.dropdownMenuContent);
-
 		super('div', props)
-		this.element!.classList.add('dropdown');
+		this.dropdownClassName = this.dropdownClassName.bind(this);
+	}
+
+	dropdownClassName() {
+		let className = ['dropdown'];
+		if (this.props.className) className.push(this.props.className);
+		return className;
 	}
 
 	init() {
+		this.element!.classList.add(...this.dropdownClassName());
+		if (this.props.id) this.element!.setAttribute('id', this.props.id);
 		this.children.dropdownButton = new Button({
 			id: "dropdownMenuButton",
 			size: this.props.dropdownButtonSize,

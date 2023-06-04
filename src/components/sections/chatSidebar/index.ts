@@ -1,16 +1,69 @@
-import Block from "../../../utils/Block";
-import { Button } from "../../ui/button";
-import Input from "../../ui/input";
-import ChatList from "../chatList";
+import { AuthController } from '../../../core/controllers/authController';
+import { ChatController } from '../../../core/controllers/chatController';
+import Router from '../../../core/router';
+import { TState } from '../../../core/store';
+import Block from '../../../utils/Block';
+import { ROUTES } from '../../../utils/constants';
+import { formDataSubmitHandler } from '../../../utils/formHandler';
+import { render } from '../../../utils/renderDom';
+import { Button } from '../../ui/button';
+import { Form } from '../../ui/form';
+import { IconLogout, IconNewChat, IconProfile } from '../../ui/icon';
+import Input from '../../ui/input';
+import { Modal, modalCloseHandler } from '../../ui/modal';
+import ChatList from '../chatList';
 import template from './chatSidebar.hbs';
 import './chatSidebar.scss'
 
 
 interface ISidebarProps {
+	logoLink?: string;
+	state: TState;
 
 }
 
-export class ChatSidebar extends Block {
+export const createNewChat = () => {
+	const modal = new Modal({
+		id: 'createNewChatModal',
+		title: 'Создание нового чата',
+		data: new Form({
+			className: 'add-value__form',
+			data: [
+				new Input({
+					className: 'input-newChat',
+					id: 'createNewChat',
+					name: 'title',
+					placeholder: 'Название чата',
+				}),
+				new Button({
+					color: 'primary',
+					isFluid: true,
+					type: 'submit',
+					size: 'lg',
+					data: 'Создать',
+				})
+			],
+			events: {
+				submit: (event: Event) => {
+					formDataSubmitHandler({
+						event,
+						handler: ChatController.addChat,
+						selector: '.add-value__form__input-group',
+						action: () => {
+							modalCloseHandler();
+						},
+					});
+				},
+			}
+		}),
+
+	});
+
+	render('#modal-root', modal);
+	modal.show();
+}
+
+export class ChatSidebar extends Block<ISidebarProps> {
 	constructor(props: ISidebarProps) {
 		super('div', props);
 		this.element!.classList.add('chat-sidebar');
@@ -20,12 +73,14 @@ export class ChatSidebar extends Block {
 		const logoLink = '/';
 
 		const newChatButton = new Button({
-			data: 'новое сообщение',
-			id: "dropdownMenuButton",
+			data: new IconNewChat({
+				size: 'icon-m'
+			}),
+			id: 'dropdownMenuButton',
+			isSquare: true,
 			events: {
-				click: () => console.log('Здесь должна быть функция. Открываю модальное окно нового чата'),
+				click: createNewChat,
 			}
-
 		});
 
 		const inputSearch = new Input({
@@ -35,18 +90,37 @@ export class ChatSidebar extends Block {
 			placeholder: 'Поиск',
 		})
 
-
-
-		// const chatList = new ChatlistSection({})
-
 		this.props.logoLink = logoLink;
 		this.children.newChatButton = newChatButton;
 		this.children.inputSearch = inputSearch;
-		this.children.chatList = new ChatList({});
-		const array = ['1', '2', '3', '4'];
-		const isArray = Array.isArray(array)
-		this.props.isArray = isArray;
-		this.props.nav = ['1', '2', '3', '4'];
+		this.children.chatList = new ChatList({ state: this.props.state, });
+		this.children.nav = [
+			new Button({
+				size: 'lg',
+				isSquare: true,
+				data: new IconProfile({
+					color: 'icon-primary',
+					size: 'icon-m'
+				}),
+				events: {
+					click: () => Router.getInstanse().go(ROUTES.profile.path)
+				},
+			}),
+			new Button({
+				size: 'lg',
+				isSquare: true,
+				data: new IconLogout({
+					color: 'icon-secondary',
+					size: 'icon-m'
+				}),
+				events: {
+					click: async (e: Event) => {
+						e.preventDefault();
+						AuthController.logout();
+					}
+				},
+			})
+		];
 
 	}
 
