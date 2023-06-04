@@ -2,7 +2,7 @@ import Block from "../../utils/Block";
 import { ROUTES } from "../../utils/constants";
 import Route from "./route";
 
-class Router {
+export class Router {
 	private static __instance: Router;
 	private routes: Route[] = [];
 	private history = window.history;
@@ -33,7 +33,7 @@ class Router {
 	}
 
 	// регистрирует блок по пути в роут и возвращает себя, чтобы можно было выстроить в цепочку
-	use(pathname: string, block: any, protectedRoute?: boolean, redirectTo?: string) {
+	use(pathname: string, block: typeof Block, protectedRoute?: boolean, redirectTo?: string) {
 		const route = new Route(pathname, block, { rootQuery: this._rootQuery, protectedRoute, redirectTo });
 
 		this.routes.push(route);
@@ -106,5 +106,3 @@ class Router {
 		return this.routes.find(route => route.match(pathname));
 	}
 }
-
-export default Router;
