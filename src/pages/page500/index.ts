@@ -12,7 +12,7 @@ interface IProfileProps {
 	data?: string
 }
 
-export class Page500 extends Block {
+export class Page500 extends Block<IProfileProps> {
 	constructor(props: IProfileProps) {
 		super('div', props);
 		this.element!.classList.add('pageError__container');

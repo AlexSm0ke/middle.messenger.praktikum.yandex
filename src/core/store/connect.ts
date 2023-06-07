@@ -3,7 +3,7 @@ import Block from '../../utils/Block';
 import { isEqual } from '../../utils/isEqual';
 // Utils
 
-export function connect<P extends TProps>(mapStateToProps: (state: TState) => TState) {
+export function connect<P extends Record<string, any>>(mapStateToProps: (state: TState) => TState) {
 	return function (Component: typeof Block<P>) {
 		return class extends Component {
 			constructor(props: P) {

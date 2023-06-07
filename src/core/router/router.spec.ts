@@ -3,14 +3,14 @@ import { Router } from './';
 import Block from '../../utils/Block';
 
 export class TestComponent extends Block {
-	_render() { }
+	// _render() { }
 	getContent() {
 		return document.createElement('div');
 	}
 }
 
 describe('Router', () => {
-	it('should be only one instance', () => {
+	it('должен быть только один экземпляр', () => {
 		const Router1 = new Router('root1');
 		const Router2 = new Router('root2');
 		assert.equal(Router1, Router2);

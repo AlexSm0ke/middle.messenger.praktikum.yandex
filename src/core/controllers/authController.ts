@@ -2,7 +2,7 @@ import { TSignUpData } from "../../types";
 import { ROUTES } from "../../utils/constants";
 import { formDataToObject } from "../../utils/formDataToObject";
 import { AuthAPI } from "../api/authApi";
-import Router from "../router";
+import { Router } from "../router";
 import { store } from "../store";
 
 const authAPI = new AuthAPI();

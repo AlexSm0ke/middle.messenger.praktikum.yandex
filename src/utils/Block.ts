@@ -1,5 +1,5 @@
 import { EventBus } from "./EventBus";
-import { nanoid } from "nanoid";
+import { v4 as uuidv4 } from 'uuid';
 
 // Нельзя создавать экземпляр данного класса
 class Block<P extends TProps = {}> {
@@ -10,7 +10,7 @@ class Block<P extends TProps = {}> {
 		FLOW_RENDER: "flow:render"
 	} as const;
 
-	public id = nanoid(6);
+	public id = uuidv4();
 	protected props: P;
 	public children: Record<string, Block | Block[]>;
 	private _eventBus: () => EventBus;

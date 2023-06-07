@@ -14,7 +14,7 @@ import { IconArrowLeft } from "../../components/ui/icon";
 import { AuthController } from "../../core/controllers/authController";
 import { formDataSubmitHandler } from "../../utils/formHandler";
 import { ROUTES } from "../../utils/constants";
-import Router from "../../core/router";
+import { Router } from "../../core/router";
 import { UserController } from "../../core/controllers/userController";
 import { Form } from "../../components/ui/form";
 import { ProfileUserAvatar } from "../../components/sections/userAvatar/userAvatar";

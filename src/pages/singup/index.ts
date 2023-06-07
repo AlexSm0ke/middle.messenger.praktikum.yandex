@@ -8,7 +8,7 @@ import Link from '../../components/ui/link';
 import { ROUTES } from '../../utils/constants';
 import { formDataSubmitHandler } from '../../utils/formHandler';
 import { AuthController } from '../../core/controllers/authController';
-import Router from '../../core/router';
+import { Router } from '../../core/router';
 
 interface ISingUpProps {
 	title: string;

@@ -33,7 +33,7 @@ export class Router {
 	}
 
 	// регистрирует блок по пути в роут и возвращает себя, чтобы можно было выстроить в цепочку
-	use(pathname: string, block: typeof Block, protectedRoute?: boolean, redirectTo?: string) {
+	use(pathname: string, block: any, protectedRoute?: boolean, redirectTo?: string) {
 		const route = new Route(pathname, block, { rootQuery: this._rootQuery, protectedRoute, redirectTo });
 
 		this.routes.push(route);

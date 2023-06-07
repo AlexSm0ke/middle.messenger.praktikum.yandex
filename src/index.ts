@@ -12,7 +12,7 @@ import {
 } from './pages';
 
 import "./styles/globals.scss";
-import Router from "./core/router";
+import { Router } from "./core/router";
 import { AuthController } from "./core/controllers/authController";
 
 const authChecker = () => AuthController.checkUser().then((res) => res.status === 200);
