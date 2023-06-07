@@ -11,12 +11,10 @@
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
     "serve": "webpack serve",
-    "husky": {
-      "hooks": {
-        "pre-commit": "npm-run-all test lint:all",
-        "pre-push": "npm run other command",
-        "...": "..."
-      }
+    "hooks": {
+      "pre-commit": "npm-run-all test lint:all",
+      "pre-push": "npm run other command",
+      "...": "..."
     }
   },
   "keywords": [],
