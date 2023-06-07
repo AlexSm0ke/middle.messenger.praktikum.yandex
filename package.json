@@ -16,13 +16,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chai": "4.3.7",
+    "chai": "^4.3.7",
     "handlebars": "4.7.7",
     "handlebars-loader": "^1.7.3",
     "nanoid": "4.0.2",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.5",
     "@types/mocha": "^10.0.1",
     "@types/uuid": "^9.0.1",
     "@webpack-cli/generators": "^3.0.6",
