@@ -10,7 +10,14 @@
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
-    "serve": "webpack serve"
+    "serve": "webpack serve",
+    "husky": {
+      "hooks": {
+        "pre-commit": "npm-run-all test lint:all",
+        "pre-push": "npm run other command",
+        "...": "..."
+      }
+    }
   },
   "keywords": [],
   "author": "",
@@ -41,12 +48,4 @@
     "webpack-dev-server": "^4.15.0"
   }
 },
-{
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm-run-all test lint:all",
-      "pre-push": "npm run other command",
-      "...": "..."
-    }
-  }
-}
+{}
