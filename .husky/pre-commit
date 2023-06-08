@@ -8,3 +8,4 @@ npm run lint
 npm run stylelint
 npm test && npm run stylelint
 npm run stylelint
+npm run pre-commit
