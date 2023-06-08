@@ -12,5 +12,5 @@ app.listen(PORT, function () {
 });
 
 app.get('*', (_, res) => {
-	res.sendfile(path.join(__dirname, 'dist/index.html'));
+	res.sendFile("index.html", { root: __dirname + "/dist" })
 })
