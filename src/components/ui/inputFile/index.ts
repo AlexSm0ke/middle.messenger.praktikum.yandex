@@ -35,7 +35,7 @@ export class InputFile extends Block<IInputFile> {
 	}
 
 	inputFileClassName() {
-		let className = ['input-file-container'];
+		const className = ['input-file-container'];
 		if (this.props.className) className.push(this.props.className);
 		return className;
 	}

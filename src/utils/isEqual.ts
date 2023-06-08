@@ -27,6 +27,7 @@ export function isEqual(lhs: PlainObject | string, rhs: PlainObject | string) {
 	}
 
 	for (const [key, value] of Object.entries(lhs)) {
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		const rightValue = rhs[key];
 

@@ -16,7 +16,7 @@ export class Form extends Block<FormProps> {
 	}
 
 	formClassName() {
-		let className = ['form'];
+		const className = ['form'];
 		if (this.props.className) className.push(this.props.className);
 		return className;
 	}

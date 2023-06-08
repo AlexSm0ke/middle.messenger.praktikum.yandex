@@ -15,7 +15,7 @@ class List extends Block<IList> {
 	}
 
 	listClassName() {
-		let className = ['list'];
+		const className = ['list'];
 		if (this.props.isFlush) className.push('list-flush');
 		if (this.props.isFluid) className.push('list-fluid');
 		if (this.props.className) className.push(this.props.className);

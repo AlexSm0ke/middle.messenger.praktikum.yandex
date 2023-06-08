@@ -15,7 +15,7 @@ class Avatar extends Block<IAvatar> {
 	}
 
 	avatarClassName() {
-		let className = ['avatar'];
+		const className = ['avatar'];
 		if (this.props.size) className.push(`avatar-${this.props.size}`);
 		if (this.props.className) className.push(this.props.className);
 		return className;

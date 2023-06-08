@@ -1,9 +1,11 @@
 {
-	"extends": "stylelint-config-standard-scss",
+	"customSyntax": "postcss-scss",
+	"extends": "stylelint-config-standard",
 	"rules": {
 		"color-hex-case": "upper",
 		"selector-class-pattern": null,
-		"scss/no-global-function-names": null
+		"alpha-value-notation": "number",
+		"no-descending-specificity": null
 	},
 	"ignoreFiles": [
 		"dist/*"

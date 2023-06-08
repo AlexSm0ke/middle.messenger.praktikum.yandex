@@ -10,7 +10,8 @@ type Indexed<T = any> = {
 };
 
 function merge(lhs: Indexed, rhs: Indexed): Indexed {
-	for (let key in rhs) {
+	for (const key in rhs) {
+		// eslint-disable-next-line no-prototype-builtins
 		if (!rhs.hasOwnProperty(key)) {
 			continue;
 		}

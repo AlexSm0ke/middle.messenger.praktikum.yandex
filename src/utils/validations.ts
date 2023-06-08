@@ -33,7 +33,7 @@ export class ValidationForm {
 
 	showError = (input: HTMLElement, selector: string, message = "Неверный формат"): void => {
 		const parent = input.closest(selector);
-		let errorElem = parent?.querySelector('[role="alert"]');
+		const errorElem = parent?.querySelector('[role="alert"]');
 		if (!errorElem && parent) {
 			const errorElem = document.createElement('span');
 			const text = document.createTextNode(message);

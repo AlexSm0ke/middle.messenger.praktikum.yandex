@@ -2,7 +2,7 @@ import { EventBus } from "./EventBus";
 import { v4 as uuidv4 } from 'uuid';
 
 // Нельзя создавать экземпляр данного класса
-class Block<P extends Record<string, any> = {}> {
+class Block<P extends Record<string, any> = object> {
 	static EVENTS = {
 		INIT: "init",
 		FLOW_CDM: "flow:component-did-mount",
@@ -23,7 +23,7 @@ class Block<P extends Record<string, any> = {}> {
 	 *
 	 * @returns {void}
 	 */
-	constructor(tagName: string = "div", propsWhithChildren: P) {
+	constructor(tagName = "div", propsWhithChildren: P) {
 		const eventBus = new EventBus();
 
 		const { props, children } = this._getChildrenAndProps(propsWhithChildren);
@@ -69,7 +69,7 @@ class Block<P extends Record<string, any> = {}> {
 				children[key as string] = value;
 			} else {
 				props[key] = value;
-			};
+			}
 
 		})
 		return { props: props as P, children };
@@ -168,7 +168,7 @@ class Block<P extends Record<string, any> = {}> {
 
 	get element() {
 		return this._element;
-	};
+	}
 
 	private _render() {
 		const fragment = this.render();
