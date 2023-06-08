@@ -23,7 +23,6 @@
 - `cd middle.messenger.praktikum.yandex` — переходим в директорию проекта,
 - `git checkout sprint_4` — переключаемся на ветку спринта,
 - `npm install` — устанавливаем зависимости ,
-- `npm run build` — собираем проект,
 - `npm run start` — запускаем сервер,
 - [http://localhost:3000](http://localhost:3000) — сервер запущен на порту 3000.
 
