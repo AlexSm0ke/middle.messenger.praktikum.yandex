@@ -1,6 +1,9 @@
 import { assert } from "chai";
 import Block from "./Block";
-import template from './blockSpec.hbs'
+import Handlebars from 'handlebars';
+
+const template = "{{{ data }}}"
+const compiled = Handlebars.compile(template);
 
 interface ITestComponent {
 	className?: string;
@@ -17,17 +20,17 @@ export class TestComponent extends Block<ITestComponent> {
 	}
 
 	render() {
-		return this.compile(template, this.props);
+		return this.compile(compiled, this.props);
 	}
 }
 
 describe("Block ", () => {
-	it("getContent should return block element", () => {
+	it("getContent должен вернуть элемент блока", () => {
 		const block = new TestComponent({});
 		assert.equal(block.getContent(), block.element);
 	});
 
-	it("should changes after block props changed", () => {
+	it("Должен обновиться после изменения пропсов", () => {
 		const block = new TestComponent({
 			data: "text1",
 		});
@@ -41,7 +44,7 @@ describe("Block ", () => {
 		assert.equal(block.getContent().innerHTML, "text2");
 	});
 
-	it("should set custom class name", () => {
+	it("должен установить кастомный classname", () => {
 		const className = "testClassName";
 
 		const block = new TestComponent({

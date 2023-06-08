@@ -16,7 +16,7 @@ describe('Router', () => {
 		assert.equal(Router1, Router2);
 	});
 
-	it('should add routes', () => {
+	it('Должен довавить роутеры', () => {
 		const router = new Router('root1');
 		router.use('/', TestComponent);
 		router.use('/index', TestComponent);
