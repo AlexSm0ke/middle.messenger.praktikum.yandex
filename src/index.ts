@@ -17,7 +17,7 @@ import { AuthController } from "./core/controllers/authController";
 
 const authChecker = () => AuthController.checkUser().then((res) => res.status === 200);
 const AppRouter = new Router("#app");
-window.router = AppRouter;
+// window.router = AppRouter;
 
 const protectedRoute = true;
 const redirectTo = ROUTES.chat.path;

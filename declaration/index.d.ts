@@ -1,4 +1,4 @@
-import Router from "@core/router";
+import { Router } from "../src/core/router/index";
 
 declare global {
 

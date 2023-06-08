@@ -2,7 +2,7 @@ import { EventBus } from "./EventBus";
 import { v4 as uuidv4 } from 'uuid';
 
 // Нельзя создавать экземпляр данного класса
-class Block<P extends TProps = {}> {
+class Block<P extends Record<string, any> = {}> {
 	static EVENTS = {
 		INIT: "init",
 		FLOW_CDM: "flow:component-did-mount",
