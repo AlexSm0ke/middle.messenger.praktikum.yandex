@@ -7,5 +7,12 @@
     "allowJs": true,
     "baseUrl": ".",
     "moduleResolution": "nodenext",
-  }
+  },
+  "include": [
+    "./src",
+    "./declarations"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
