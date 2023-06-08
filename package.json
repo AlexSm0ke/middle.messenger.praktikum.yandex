@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "ts-mocha src/**/*.spec.ts -r test/mock.js",
-    "start": "node server.js",
+    "start": "npm run build && node ./server.js",
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
