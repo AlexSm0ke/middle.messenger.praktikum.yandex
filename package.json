@@ -14,7 +14,8 @@
     "stylelint": "stylelint \"**/*.scss\"",
     "stylelint-fix": "stylelint --fix .",
     "watch": "webpack --watch",
-    "dev": "webpack serve"
+    "dev": "webpack serve",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
