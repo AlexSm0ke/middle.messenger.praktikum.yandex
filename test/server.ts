@@ -9,7 +9,6 @@ const routes = {
 };
 
 const dbJsonFilePath = path.join(__dirname, 'db.json');
-console.log(dbJsonFilePath);
 fs.writeFileSync(dbJsonFilePath, JSON.stringify(routes), {});
 const router = jsonServer.router(dbJsonFilePath);
 const middlewares = jsonServer.defaults({
