@@ -24,7 +24,7 @@ const redirectTo = ROUTES.chat.path;
 
 document.addEventListener("DOMContentLoaded", () => {
 	AppRouter.authCheck(authChecker)
-		.use(ROUTES.home.path, MainPage)
+		.use(ROUTES.home.path, LoginPage, !protectedRoute, redirectTo)
 		.use(ROUTES.login.path, LoginPage, !protectedRoute, redirectTo)
 		.use(ROUTES.register.path, SingUpPage, !protectedRoute, redirectTo)
 		.use(ROUTES.chat.path, ChatPage, protectedRoute)
