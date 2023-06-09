@@ -2,7 +2,7 @@ import Block from '../../utils/Block'
 import template from './login.hbs';
 import { LabledInput } from '../../components/ui/LabledInput';
 import { Button } from '../../components/ui/button';
-import { validateInput } from '../../utils/validations';
+import { inputValueHandler, validateInput } from '../../utils/validations';
 import './login.scss'
 import Link from '../../components/ui/link';
 import { ROUTES } from '../../utils/constants';
@@ -34,6 +34,7 @@ export class LoginPage extends Block<ILoginProps> {
 			placeholder: 'Логин',
 			events: {
 				blur: (event) => validateInput(event.target as HTMLInputElement)
+
 			}
 		});
 

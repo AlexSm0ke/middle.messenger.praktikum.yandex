@@ -88,6 +88,7 @@ export const formDataSubmitHandler = async (params: {
 			}
 		}
 		const formData = new FormData(target);
+
 		const result = await handler(formData);
 		if (result.status === 200) {
 			if (action) action();
