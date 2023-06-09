@@ -3,7 +3,6 @@
 
 Реализованы следующие разделыЖ
 
-- [Главная] (https://astounding-sunshine-413466.netlify.app/login)
 - [Вход](https://astounding-sunshine-413466.netlify.app/login)
 - [Регистрация](https://astounding-sunshine-413466.netlify.app/sign-up)
 - [Профиль](https://astounding-sunshine-413466.netlify.app/profile)
