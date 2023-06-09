@@ -30,7 +30,6 @@ export class AuthController {
 
 	static async signIn(formData: FormData) {
 		const data = formDataToObject(formData) as TSignUpData;
-		console.log('data', data);
 
 		try {
 			const result = await authAPI.signIn(data);

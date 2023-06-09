@@ -26,7 +26,6 @@ const getHeader = (state: TState) => {
 };
 
 const getChatMessageArea = (state: TState) => {
-	console.log('state', state.messages);
 
 	if (Object.keys(state).length === 0 || !state.activeChat)
 		return new DivBlock({

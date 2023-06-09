@@ -40,11 +40,6 @@ class PasswordEdit extends Block<IPasswordEditProps> {
 			}
 		});
 
-		this.children.avatar = new Image({
-			src: 'images/back.phg',
-			alt: 'назад',
-		})
-
 		const inputFields: { [key: string]: string } = {
 			oldPassword: 'Старый пароль',
 			newPassword: 'Новый пароль',

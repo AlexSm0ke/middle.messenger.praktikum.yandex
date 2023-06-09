@@ -87,11 +87,6 @@ class ProfileEdit extends Block<IProfileEditProps> {
 			}
 		});
 
-		this.children.avatar = new Image({
-			src: 'images/back.phg',
-			alt: 'назад',
-		})
-
 		this.children.buttonSave = new Button({
 			className: 'btn-primary',
 			type: 'submit',

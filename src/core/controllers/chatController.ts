@@ -12,7 +12,6 @@ export class ChatController {
         return chatAPI
             .getChatList(params)
             .then((response) => {
-                console.log('response.response', response.response);
                 store.set('chats', response.response);
                 return response;
             })
