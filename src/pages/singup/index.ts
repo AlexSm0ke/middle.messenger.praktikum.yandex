@@ -17,6 +17,18 @@ interface ISingUpProps {
 	}
 }
 
+type InputParams = {
+	id: string;
+	name: string;
+	placeholder: string;
+	type?: 'input' | 'password';
+	events: {
+		blur: (e: Event) => void;
+		input: (e: Event) => void;
+	}
+
+}
+
 export class SingUpPage extends Block<ISingUpProps> {
 	constructor(props: ISingUpProps) {
 		super('div', props);
@@ -30,7 +42,7 @@ export class SingUpPage extends Block<ISingUpProps> {
 			input: (event: Event) => inputValueHandler(event.target as HTMLInputElement),
 		};
 
-		const inputParametrs = [
+		const inputParametrs: InputParams[] = [
 			{
 				id: "email",
 				name: "email",
@@ -64,12 +76,14 @@ export class SingUpPage extends Block<ISingUpProps> {
 			{
 				id: 'password',
 				name: 'password',
+				type: 'password',
 				placeholder: 'Пароль',
 				events: { ...inputEvents }
 			},
 			{
 				id: 'password',
 				name: 'password',
+				type: 'password',
 				placeholder: 'Пароль (ещё раз)',
 				events: { ...inputEvents }
 			},

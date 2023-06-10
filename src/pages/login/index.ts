@@ -41,6 +41,7 @@ export class LoginPage extends Block<ILoginProps> {
 		this.children.inputPassword = new LabledInput({
 			id: 'password',
 			name: 'password',
+			type: 'password',
 			placeholder: 'Пароль',
 			events: {
 				blur: (event) => validateInput(event.target as HTMLInputElement)
