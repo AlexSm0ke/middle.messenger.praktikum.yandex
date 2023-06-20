@@ -16,7 +16,7 @@ class Image extends Block<IImage> {
 	}
 
 	imageClassName() {
-		let className = ['img'];
+		const className = ['img'];
 		if (this.props.className) className.push(this.props.className);
 		return className;
 	}

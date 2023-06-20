@@ -1,4 +1,4 @@
-import Router from "@core/router";
+import { Router } from "../src/core/router/index";
 
 declare global {
 
@@ -11,7 +11,7 @@ declare global {
 
 	export type TProps = Record<string, any>;
 
-	export type Key = keyof Object;
+	export type Key = keyof object;
 
 	export type Indexed<T = unknown> = {
 		[key in string]: T;

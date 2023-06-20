@@ -1,13 +1,12 @@
-import Block from "../../utils/Block";
 import { ROUTES } from "../../utils/constants";
 import Route from "./route";
 
-class Router {
+export class Router {
 	private static __instance: Router;
 	private routes: Route[] = [];
 	private history = window.history;
 	private _currentRoute: Route | null = null;
-	private _rootQuery: string = '#app';
+	private _rootQuery = '#app';
 	_authCheck!: () => Promise<boolean>;
 
 	constructor(rootQuery: string) {
@@ -106,5 +105,3 @@ class Router {
 		return this.routes.find(route => route.match(pathname));
 	}
 }
-
-export default Router;

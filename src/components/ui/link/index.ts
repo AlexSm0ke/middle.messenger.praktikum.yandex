@@ -8,7 +8,7 @@ interface IList {
 	data: Block | string;
 }
 
-class Link extends Block {
+class Link extends Block<IList>{
 	constructor(props: IList) {
 		super('a', props);
 	}

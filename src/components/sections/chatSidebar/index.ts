@@ -1,6 +1,6 @@
 import { AuthController } from '../../../core/controllers/authController';
 import { ChatController } from '../../../core/controllers/chatController';
-import Router from '../../../core/router';
+import { Router } from '../../../core/router';
 import { TState } from '../../../core/store';
 import Block from '../../../utils/Block';
 import { ROUTES } from '../../../utils/constants';

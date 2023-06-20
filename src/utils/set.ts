@@ -10,6 +10,10 @@
 import merge from "./merge";
 
 
+export type Indexed<T = unknown> = {
+	[key in string]: T;
+};
+
 export function set(object: Indexed | unknown, path: string, value: unknown): Indexed | unknown {
 	if (typeof object !== 'object' || object === null) {
 		return object;

@@ -11,7 +11,7 @@ import { Form } from "../../components/ui/form";
 import { formDataSubmitHandler } from "../../utils/formHandler";
 import { UserController } from "../../core/controllers/userController";
 import { ROUTES } from "../../utils/constants";
-import Router from "../../core/router";
+import { Router } from "../../core/router";
 import { AuthController } from "../../core/controllers/authController";
 import { connect } from "../../core/store/connect";
 import { TState } from "../../core/store";
@@ -39,11 +39,6 @@ class PasswordEdit extends Block<IPasswordEditProps> {
 				}
 			}
 		});
-
-		this.children.avatar = new Image({
-			src: 'images/back.phg',
-			alt: 'назад',
-		})
 
 		const inputFields: { [key: string]: string } = {
 			oldPassword: 'Старый пароль',

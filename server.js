@@ -1,6 +1,6 @@
-// server.js
+/* eslint-disable @typescript-eslint/no-var-requires */
+// eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
 const express = require('express');
-const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,5 +12,5 @@ app.listen(PORT, function () {
 });
 
 app.get('*', (_, res) => {
-	res.sendfile(path.join(__dirname, 'dist/index.html'));
+	res.sendFile("index.html", { root: __dirname + "/dist" })
 })

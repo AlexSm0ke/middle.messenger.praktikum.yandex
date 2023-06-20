@@ -1,8 +1,8 @@
 import { EventBus } from "./EventBus";
-import { nanoid } from "nanoid";
+import { v4 as uuidv4 } from 'uuid';
 
 // Нельзя создавать экземпляр данного класса
-class Block<P extends TProps = {}> {
+class Block<P extends Record<string, any> = object> {
 	static EVENTS = {
 		INIT: "init",
 		FLOW_CDM: "flow:component-did-mount",
@@ -10,7 +10,7 @@ class Block<P extends TProps = {}> {
 		FLOW_RENDER: "flow:render"
 	} as const;
 
-	public id = nanoid(6);
+	public id = uuidv4();
 	protected props: P;
 	public children: Record<string, Block | Block[]>;
 	private _eventBus: () => EventBus;
@@ -23,7 +23,7 @@ class Block<P extends TProps = {}> {
 	 *
 	 * @returns {void}
 	 */
-	constructor(tagName: string = "div", propsWhithChildren: P) {
+	constructor(tagName = "div", propsWhithChildren: P) {
 		const eventBus = new EventBus();
 
 		const { props, children } = this._getChildrenAndProps(propsWhithChildren);
@@ -69,7 +69,7 @@ class Block<P extends TProps = {}> {
 				children[key as string] = value;
 			} else {
 				props[key] = value;
-			};
+			}
 
 		})
 		return { props: props as P, children };
@@ -168,7 +168,7 @@ class Block<P extends TProps = {}> {
 
 	get element() {
 		return this._element;
-	};
+	}
 
 	private _render() {
 		const fragment = this.render();

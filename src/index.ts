@@ -12,19 +12,19 @@ import {
 } from './pages';
 
 import "./styles/globals.scss";
-import Router from "./core/router";
+import { Router } from "./core/router";
 import { AuthController } from "./core/controllers/authController";
 
 const authChecker = () => AuthController.checkUser().then((res) => res.status === 200);
 const AppRouter = new Router("#app");
-window.router = AppRouter;
+// window.router = AppRouter;
 
 const protectedRoute = true;
 const redirectTo = ROUTES.chat.path;
 
 document.addEventListener("DOMContentLoaded", () => {
 	AppRouter.authCheck(authChecker)
-		.use(ROUTES.home.path, MainPage)
+		.use(ROUTES.home.path, LoginPage, !protectedRoute, redirectTo)
 		.use(ROUTES.login.path, LoginPage, !protectedRoute, redirectTo)
 		.use(ROUTES.register.path, SingUpPage, !protectedRoute, redirectTo)
 		.use(ROUTES.chat.path, ChatPage, protectedRoute)

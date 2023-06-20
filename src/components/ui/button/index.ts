@@ -1,9 +1,7 @@
 import template from './button.hbs';
-// import Handlebars from 'handlebars/dist/handlebars.runtime';
 import Block from '../../../utils/Block';
 import './button.scss'
 
-// Handlebars.registerPartial('button', button);
 
 interface ButtonProps {
 	className?: string;
@@ -22,7 +20,7 @@ interface ButtonProps {
 		click?: (e: Event) => void;
 		submit?: (e: Event) => void;
 	}
-};
+}
 
 export class Button extends Block<ButtonProps> {
 	constructor(props: ButtonProps) {
@@ -31,7 +29,7 @@ export class Button extends Block<ButtonProps> {
 	}
 
 	buttonClassName() {
-		let className = ['btn'];
+		const className = ['btn'];
 		if (this.props.color) className.push(this.props.color);
 		if (this.props.className) className.push(this.props.className);
 

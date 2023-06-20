@@ -16,7 +16,7 @@ export class Label2 extends Block<ILabel> {
 	}
 
 	labelClassName() {
-		let className = ['label2'];
+		const className = ['label2'];
 		if (this.props.className) className.push(this.props.className);
 		if (this.props.isCircle) className.push('label-circle');
 		if (this.props.color) className.push(this.props.color);

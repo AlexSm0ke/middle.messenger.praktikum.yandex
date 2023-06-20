@@ -22,7 +22,7 @@ const dropdownHide = () => {
 	const dropdowns: NodeListOf<HTMLElement> = document.querySelectorAll('.dropdown');
 	dropdowns.forEach((dropdown: HTMLElement) => {
 		if (dropdown.classList.contains('show')) {
-			let button = <HTMLElement>dropdown.querySelector('#dropdownMenuButton');
+			const button = <HTMLElement>dropdown.querySelector('#dropdownMenuButton');
 			button.classList.remove('active');
 			dropdown.classList.remove('show');
 		}
@@ -36,7 +36,7 @@ const dropdownHidehandler = (event: Event) => {
 		if (!target.closest('.dropdown-item')) {
 			return;
 		}
-	};
+	}
 
 	dropdownHide();
 };
@@ -55,7 +55,7 @@ const dropdownHandler = (event: Event) => {
 			dropdown.classList.add('show');
 			window.addEventListener('click', dropdownHidehandler);
 		}
-	};
+	}
 };
 
 class Dropdown extends Block<IDropdown> {
@@ -65,7 +65,7 @@ class Dropdown extends Block<IDropdown> {
 	}
 
 	dropdownClassName() {
-		let className = ['dropdown'];
+		const className = ['dropdown'];
 		if (this.props.className) className.push(this.props.className);
 		return className;
 	}

@@ -1,4 +1,4 @@
-type PlainObject<T = any> = {
+export type PlainObject<T = any> = {
 	[k in string]: T;
 };
 
@@ -20,13 +20,15 @@ function isArrayOrObject(value: unknown): value is [] | PlainObject {
 	return isPlainObject(value) || isArray(value);
 }
 
-export function isEqual(lhs: PlainObject, rhs: PlainObject) {
+export function isEqual(lhs: PlainObject | string, rhs: PlainObject | string) {
 	// если длина количество ключей на этом уровне вложенности отличается
 	if (Object.keys(lhs).length !== Object.keys(rhs).length) {
 		return false;
 	}
 
 	for (const [key, value] of Object.entries(lhs)) {
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		const rightValue = rhs[key];
 
 		if (isArrayOrObject(value) && isArrayOrObject(rightValue)) {

@@ -40,3 +40,5 @@ export const API_ENDPOINTS = {
 		getChatUsers: (id: number) => `${API_PATH}/chats/token/${id}`,
 	},
 }
+
+export const API_TEST_PATH = 'http://localhost:3000';

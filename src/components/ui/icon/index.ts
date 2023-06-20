@@ -28,7 +28,7 @@ class IconBlock extends Block<IIcon> {
 	}
 
 	iconClassName() {
-		let className = ['icon'];
+		const className = ['icon'];
 		if (this.props.size) className.push(this.props.size)
 		if (this.props.color) className.push(this.props.color)
 		if (this.props.className) className.push(this.props.className)

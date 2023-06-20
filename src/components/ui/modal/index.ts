@@ -35,7 +35,7 @@ export class Modal extends Block<IModal> {
 	}
 
 	modalClassName() {
-		let className = ['modal'];
+		const className = ['modal'];
 		if (this.props.className !== undefined) className.push(this.props.className);
 		return className;
 	}

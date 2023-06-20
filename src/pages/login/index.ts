@@ -2,13 +2,13 @@ import Block from '../../utils/Block'
 import template from './login.hbs';
 import { LabledInput } from '../../components/ui/LabledInput';
 import { Button } from '../../components/ui/button';
-import { validateInput } from '../../utils/validations';
+import { inputValueHandler, validateInput } from '../../utils/validations';
 import './login.scss'
 import Link from '../../components/ui/link';
 import { ROUTES } from '../../utils/constants';
 import { formDataSubmitHandler } from '../../utils/formHandler';
 import { AuthController } from '../../core/controllers/authController';
-import Router from '../../core/router';
+import { Router } from '../../core/router';
 
 interface ILoginProps {
 	inputLogin?: Block;
@@ -34,12 +34,14 @@ export class LoginPage extends Block<ILoginProps> {
 			placeholder: 'Логин',
 			events: {
 				blur: (event) => validateInput(event.target as HTMLInputElement)
+
 			}
 		});
 
 		this.children.inputPassword = new LabledInput({
 			id: 'password',
 			name: 'password',
+			type: 'password',
 			placeholder: 'Пароль',
 			events: {
 				blur: (event) => validateInput(event.target as HTMLInputElement)

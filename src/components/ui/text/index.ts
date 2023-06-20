@@ -1,11 +1,10 @@
-
 import Block from "../../../utils/Block";
 import template from "./text.hbs";
 
 interface IText {
 	className?: string;
 	data?: Block | string;
-};
+}
 
 class Text extends Block<IText> {
 	constructor(props: IText) {
